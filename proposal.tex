@@ -132,20 +132,15 @@ The barrier extends beyond mere aesthetics. Interpreting these diagrams requires
 In essence, LLVM provides extraordinarily powerful analysis capabilities but pairs them with visualization tools that assume their primary consumer is someone who already understands what they're looking at. This creates a frustrating gap: we can automatically extract rich semantic information about program behavior, but we cannot automatically present that information in a way that serves educational or presentational contexts. LLVManim aims to bridge this gap by maintaining LLVM's analytical rigor while replacing its austere output with animations designed for human communication rather than machine precision.
 
 \section{Manim}
-\TODO{critical} Present the Manim library and establish its efficacy with
-citable references to its effective use in
-\href{https://www.youtube.com/@3blue1brown}{3Blue1Brown} videos.
+The Manim library was originally developed by Grant Sanderson for his educational YouTube channel "3Blue1Brown", specifically for animating math and computer science concepts. His beginner-friendly animations assisted him in becoming one of the more well-known online personalities in these fields and have helped countless others improve their understanding of complex topics. This history makes it a prime candidate as a tool for creating high-quality educational/informational presentations, but many are unable or unwilling to spend the time and effort it takes to create custom animations using a third-party Python library.
 
-The Manim library was originally developed by Grant Sanderson for his
-educational YouTube channel "3Blue1Brown", specifically for animating math and
-computer science concepts. His beginner-friendly animations assisted him in
-becoming one of the more well-known online personalities in these fields and
-have helped countless others improve their understanding of complex topics.
-This history makes it a prime candidate as a tool for creating high-quality
-educational/informational presentations, but many are unable or unwilling to
-spend the time and effort it takes to create custom animations using a
-third-party Python library.
+While tools like PythonTutor and LLVM address the technical challenge of extracting and displaying program information, they fall short in making that information genuinely engaging. This is where Manim distinguishes itself, not as a code analysis tool, but as a demonstration of what is possible when visualization prioritizes both clarity and aesthetic appeal.
 
+Since its inception in 2015, the 3Blue1Brown channel has gained more than 6 million subscribers and hundreds of millions of views. Individual videos on topics such as linear algebra, calculus, and even neural networks regularly reach audiences of millions. Sanderson's approach, using smooth, precisely choreographed animations to build intuition about abstract concepts, has earned him widespread recognition in the educational community; he won a 2020 YouTube Streamy Award for Education. The key to all of these animations is Manim, an animation engine written in Python and maintained by Sanderson himself.
+
+Manim's strength lies in its ability to programmatically generate animations with mathematical precision. Instead of tiresome keyframe animation like other software, Manim allows users to write Python code to determine how different mathematical objects should look, change, and interact with each other. Manim can render beautiful 3D scenes, render LaTeX equations, and output crisp 60 fps animations for any purpose, from YouTube tutorials to academic conferences. What makes Manim unique for education is its capacity to make complicated ideas, like matrix transformations, function composition, or even program flow, tangible and understandable to the viewer by systematically unfolding them.
+
+Yet, this power comes with a barrier to entry. It is not trivial for a professor who wants to make a presentation for a single lecture, or a researcher who wants to create visualizations for a conference presentation, to learn and use Manim effectively. They may have a clear idea of what they want to show, perhaps how a recursive function builds up its stack, but writing Manim code for it requires a distinct skill set. LLVManim addresses this challenge by automatically translating program semantics into visual representations, thereby eliminating the barrier of manual coding between LLVM's analytical power and Manim's visual sophistication.
 
 \section{LLVManim}
 By providing a solution to quickly and easily create data-based animations,
