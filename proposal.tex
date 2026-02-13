@@ -187,7 +187,7 @@ visualizing fundamentals, such as control flow and memory allocations.
     interface that allows users to specify input files, select visualization
     options, and generate animations with minimal configuration.
     \item \textbf{Basic Animation Customization:} Allow users to customize the
-    appearance of animations (e.g., color schemes, animation speed, etc.) to suit
+    appearance of animations (e.g. color schemes, animation speed, etc.) to suit
     different presentation contexts.
     \item \TODO{non-critical} Come up with more core features.
 \end{itemize}
@@ -215,6 +215,13 @@ visualizing fundamentals, such as control flow and memory allocations.
 
 
 \subsection{Implementation Plan}
+We approach the implementation of LLVManim as a 3-layer architecture:
+\textbf{Ingestion}, \textbf{Transformation}, and \textbf{Presentation}. The
+Ingestion layer collects LLVM IR and metadata. The transformation layer maps the
+collected IR constructs and trace events to an intermediate scene graph. The
+presentation layer renders the scene graph with Manim animations and exposes a
+small API for interactive playback.
+
 \TODO{critical} Explain approach and details for how the tool will operate,
 present UI mock-up.
 
