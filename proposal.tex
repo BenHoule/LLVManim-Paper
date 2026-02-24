@@ -15,10 +15,6 @@
 \usepackage{etoolbox}
 
 \newcommand{\TODO}[1]{\textbf{TODO (#1): }}
-\newcommand{\CCS}[1]{%
-  \renewcommand*{\do}[1]{##1$\rightarrow$} % Reset separator
-  \docsvlist{#1}% Parse the comma-separated list
-}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -73,33 +69,13 @@ program visualization, code animation, LLVM, static analysis, control flow graph
 \end{IEEEkeywords}
 
 
-
 \section{Introduction}
-Despite static analysis and data visualization being among the oldest concepts
-in computer science, it seems that disappointingly few graphic designers have
-been significantly interested in the former. While plenty of tools exist for
-creating control flow graphs or visualizing the stack, the majority of these
-favor a “function over form” paradigm that focuses on creating light-weight
-readable output, assuming the user is more concerned with the information
-than its presentation. This, however, is not always the case: presenting in any
-context, such as at a conference or school, generally favors quickly digestible
-and visually appealing content opposed to static, large blocks of text. In
-these cases, the presenter is currently forced to choose between using the
-unappealing generated visualization and the slog of creating something
-presentable for themselves.
-
-
+Despite static analysis and data visualization being among the oldest concepts in computer science, it seems that disappointingly few graphic designers have been significantly interested in the former. While plenty of tools exist for creating control flow graphs or visualizing the stack, the majority of these favor a “function over form” paradigm that focuses on creating light-weight readable output, assuming the user is more concerned with the information than its presentation. This, however, is not always the case: presenting in any context, such as at a conference or school, generally favors quickly digestible and visually appealing content opposed to static, large blocks of text. In
+these cases, the presenter is currently forced to choose between using the unappealing generated visualization and the slog of creating something presentable for themselves.
 
 \section{Existing Tools}
-
 \subsection{PythonTutor}
-PythonTutor is a widely used educational tool for visualizing program
-execution, originally developed to help novices build accurate mental models
-of how code runs. Its core contribution is a step‑by‑step execution trace that
-exposes stack frames, heap objects, and control flow in a concrete, visual
-manner. As described by its creator, Philip J. Guo, PythonTutor aims to "help
-people overcome a fundamental barrier to learning programming: understanding
-what happens as the computer runs each line of code" \cite{Guo2013}.
+PythonTutor\cite{pythontutor} is a widely used educational tool for visualizing program execution, originally developed to help novices build accurate mental models of how code runs. Its core contribution is a step‑by‑step execution trace that exposes stack frames, heap objects, and control flow in a concrete, visual manner. As described by its creator, Philip J. Guo, PythonTutor aims to "help people overcome a fundamental barrier to learning programming: understanding what happens as the computer runs each line of code" \cite{Guo2013}.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=\linewidth]{PythonTutor.PNG}}
@@ -107,32 +83,20 @@ what happens as the computer runs each line of code" \cite{Guo2013}.
 \label{fig:pythontutor}
 \end{figure}
 
-In fact, Pythontutor has been shown to be effective in improving students'
-understanding of programming concepts; Guo's further studies demonstrated
-significant learning gains when Pythontutor was used as a supplement to traditional instruction
-\cite{Guo2015}. This shows the educational value of connecting code execution to
-visual representations, as well as the benefits of an accessible, interactive
+In fact, PythonTutor has been shown to be effective in improving students' understanding of programming concepts; Guo's further studies demonstrated significant learning gains when PythonTutor was used as a supplement to traditional instruction \cite{Guo2015}. This shows the educational value of connecting code execution to visual representations, as well as the benefits of an accessible, interactive
 tool.
 
-However, the visualizations produced by PythonTutor are relatively basic and not
-suitable for presentation purposes. PythonTutor's primary focus is on clarity
-and educational value rather than aesthetics, resulting in output that may be
-difficult to read or visually unappealing when projected to an audience. This,
-along with the fact that the tool is web-based and not designed for offline use,
-makes it less than ideal for use in settings such as conference presentations where
-visual appeal is important. PythonTutor is additionally restricted by its
-support for only six programming languages, limited customization options, and
-minimal library of visualization methods.
+However, the visualizations produced by PythonTutor are relatively basic and not suitable for presentation purposes. PythonTutor's primary focus is on clarity and educational value rather than aesthetics, resulting in output that may be difficult to read or visually unappealing when projected to an audience. This, along with the fact that the tool is web-based and not designed for offline use, makes it less than ideal for use in settings such as conference presentations where visual impact is important. PythonTutor is additionally restricted by its limited customization options, minimal library of visualization methods, and support for only C, C\thinspace\verb|++|, Java, Javascript, and Python.
 
 \subsection{LLVM Analysis and Transform Passes}
-LLVM has emerged as the de-facto standard compiler infrastructure for modern software development, powering everything from the development environment for Apple operating systems to cutting-edge systems research efforts. Its adoption by the compiler community can be attributed to several key strengths—robust support for numerous programming languages including C, C++, Rust, Swift, and Julia, a modular architecture that separates language frontends from optimization backends, and an extensive suite of analysis and transformation passes that expose deep insights into program behavior \cite{LLVM2004}.
+LLVM has emerged as the de-facto standard compiler infrastructure for modern software development, powering everything from the development environment for Apple operating systems to cutting-edge systems research efforts. Its adoption by the compiler community can be attributed to several key strengths--a modular architecture that separates language frontends from optimization backends, an extensive suite of analysis and transformation passes that expose deep insights into program behavior, and robust support for numerous programming languages including C, C++, Rust, Swift, and Julia \cite{LLVM2004}.
 
 At the core of LLVM's value proposition for code analysis is its Intermediate Representation (IR), a low-level and platform-independent format that captures program semantics in a standardized way. This IR serves as the foundation for powerful built-in analysis passes that can generate control flow graphs, dominator trees, data flow analyses, and detailed memory access patterns. For compiler developers and researchers, these capabilities are invaluable—LLVM effectively solves the hard problem of extracting structured information from code, allowing them to focus on higher-level tasks like optimization or verification \cite{LLVMRef}.
 
-However, LLVM's visualization capabilities tell a different story. The standard approach for visualizing analysis results relies on generating DOT files through passes like \texttt{-dot-cfg} or \texttt{-view-cfg}, which are then rendered using Graphviz. While functionally correct, the resulting diagrams embody a strictly utilitarian aesthetic: monochrome nodes and edges, densely packed labels filled with LLVM IR instructions, and layouts optimized for completeness rather than clarity. This "function over form" philosophy serves well enough as a developer tool for debugging optimizer passes, but it fails catastrophically as a solution for communication beyond that narrow domain. A lecturer explaining recursion to undergraduates, a tech lead presenting architectural decisions to stakeholders, or a researcher delivering a conference talk all face the same problem: LLVM-generated visualizations are too dense, too technical, and frankly, too ugly to serve their pedagogical or presentational needs.
+However, LLVM's visualization capabilities tell a different story. The standard approach for visualizing analysis results relies on generating DOT\footnote{Abstract grammar for defining Graphviz nodes, edges, graphs, subgraphs, and clusters.} files through passes like \texttt{-dot-cfg} or \texttt{-view-cfg}, which are then rendered using Graphviz\cite{graphviz}. While functionally correct, the resulting diagrams embody a strictly utilitarian aesthetic: monochrome nodes and edges, densely packed labels filled with LLVM IR instructions, and layouts optimized for completeness rather than clarity. This "function over form" philosophy serves well enough as a developer tool for debugging optimizer passes, but it fails catastrophically as a solution for communication beyond that narrow domain. A lecturer explaining recursion to undergraduates, a tech lead presenting architectural decisions to stakeholders, or a researcher delivering a conference talk all face the same problem: LLVM-generated visualizations are too dense, too technical, and frankly, too ugly to serve their pedagogical or presentational needs.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=\linewidth]{CFG.PNG}}
+\centerline{\includegraphics[width=\linewidth]{images/CFG.pdf}}
 \caption{Example Control Flow Graph using LLVM \texttt{-dot-cfg} pass. While technically accurate, the visualization prioritizes information density over visual clarity.}
 \label{fig:cfg}
 \end{figure}
@@ -142,11 +106,11 @@ The barrier extends beyond mere aesthetics. Interpreting these diagrams requires
 In essence, LLVM provides extraordinarily powerful analysis capabilities but pairs them with visualization tools that assume their primary consumer is someone who already understands what they're looking at. This creates a frustrating gap: we can automatically extract rich semantic information about program behavior, but we cannot automatically present that information in a way that serves educational or presentational contexts. LLVManim aims to bridge this gap by maintaining LLVM's analytical rigor while replacing its austere output with animations designed for human communication rather than machine precision.
 
 \section{Manim}
-The Manim library was originally developed by Grant Sanderson\cite{3b1b-website} for his popular educational YouTube channel "3Blue1Brown" to create animations of mathematical and computer science concepts.\cite{3b1b-channel} His approachable animations have helped him become one of the most well-known online educators in these fields and have helped countless others understand complex topics more easily. Given this history, Manim represents an excellent candidate for creating high-quality educational presentations. Unfortunately, many potential users lack either the ability or the willingness to invest the substantial time required to create custom animations with this Python library.
+The Manim library\cite{manim} was originally developed by Grant Sanderson\cite{3b1b-website} for his popular educational YouTube channel "3Blue1Brown" to create animations of mathematical and computer science concepts.\cite{3b1b-channel} His approachable animations have helped him become one of the most well-known online educators in these fields and have helped countless others understand complex topics more easily. Given this history, Manim represents an excellent candidate for creating high-quality educational presentations. Unfortunately, many potential users lack either the ability or the willingness to invest the substantial time required to create custom animations with this Python library.
 
 While tools like PythonTutor and LLVM successfully address the technical challenge of extracting and displaying program information, they fall short in making that information genuinely engaging. This is where Manim distinguishes itself, not as a code analysis tool, but as a demonstration of what becomes possible when visualization prioritizes both clarity and aesthetic appeal.
 
-Since its inception in 2015, the 3Blue1Brown channel has gained more than 6 million subscribers and hundreds of millions of views. Individual videos on topics such as linear algebra, calculus, and even neural networks regularly reach audiences of millions. Sanderson's approach, using smooth, precisely choreographed animations to build intuition about abstract concepts, has earned him widespread recognition in the educational community; he won a 2020 YouTube Streamy Award for Education. The key to all of these animations is Manim, an animation engine written in Python and maintained by Sanderson himself.
+Since its inception in 2015, the 3Blue1Brown channel has gained more than 6 million subscribers and hundreds of millions of views. Individual videos on topics such as linear algebra, calculus, and even neural networks regularly reach audiences of millions. Sanderson's approach, using smooth, precisely choreographed animations to build intuition about abstract concepts, has earned him widespread recognition in the educational community. The key to all of these animations is Manim, an animation engine written in Python and maintained by Sanderson himself.
 
 Manim's strength lies in its ability to programmatically generate animations with mathematical precision. Instead of tiresome keyframe animation like other software, Manim allows users to write Python code to determine how different mathematical objects should look, change, and interact with each other. Manim can render beautiful 3D scenes, render LaTeX equations, and output crisp 60 fps animations for any purpose, from YouTube tutorials to academic conferences. What makes Manim unique for education is its capacity to make complicated ideas, like matrix transformations, function composition, or even program flow, tangible and understandable to the viewer by systematically unfolding them.
 
@@ -238,56 +202,6 @@ small API for interactive playback.
 \label{fig:model_diagram}
 \end{figure}
 
-
-\subsubsection{Ingestion Layer}
-The Ingestion layer extracts program structure from LLVM IR. We use the \texttt{llvmlite} Python binding to parse .ll files generated by clang with the \texttt{-g} flag for debug metadata.
-
-Key operations:
-\begin{itemize}
-    \item \textbf{IR Parsing:} Load LLVM modules and extract functions, basic blocks, and instructions.
-    \item \textbf{Control Flow Extraction:} Build CFGs by analyzing branch instructions and identifying successor relationships between blocks.
-    \item \textbf{Metadata Collection:} Extract debug information like source line numbers, variable names, and types from LLVM debug intrinsics.
-    \item \textbf{Memory Operation Identification:} Catalog memory-related instructions including \texttt{load}, \texttt{store}, \texttt{alloca}, and \texttt{call} for tracking memory access patterns and stack operations.
-\end{itemize}
-
-Output: Structured representation with CFG, instruction list, and metadata stored in Python dictionaries mapping basic block IDs to instruction sequences.
-
-\subsubsection{Transformation Layer}
-The Transformation layer maps LLVM constructs to an intermediate scene graph for Manim rendering.
-
-Key operations:
-\begin{itemize}
-    \item \textbf{Scene Graph Construction:} Create hierarchical representation where nodes correspond to visual elements (basic blocks, stack frames, memory cells) with properties for position, appearance, and timing.
-    \item \textbf{Layout Algorithm:} Apply hierarchical layout to position CFG nodes while minimizing edge crossings and maintaining logical flow direction. We use a modified Sugiyama framework with constraints for common patterns like if-else branches and loop back-edges.
-    \item \textbf{Instruction-to-Animation Mapping:} Define animation primitives for each LLVM instruction:
-    \begin{itemize}
-        \item \texttt{alloca}: Create stack frame with variable label
-        \item \texttt{load}/\texttt{store}: Animate arrow to/from memory location
-        \item \texttt{call}: Push new stack frame with fade-in
-        \item \texttt{ret}: Pop stack frame with fade-out
-        \item \texttt{br}: Highlight control flow edge with color change
-    \end{itemize}
-    \item \textbf{Timing Coordination:} Calculate timing offsets for animation events (default 1 second per instruction, user-configurable).
-\end{itemize}
-
-The scene graph uses a JSON-like structure independent of both LLVM and Manim.
-
-\subsubsection{Presentation Layer}
-The Presentation layer renders the scene graph using Manim.
-
-Key operations:
-\begin{itemize}
-    \item \textbf{Manim Code Generation:} Translate scene graph into Python code defining a Manim \texttt{Scene} class. Visual elements become \texttt{Mobject} instances with animation commands.
-    \item \textbf{Rendering Pipeline:} Invoke Manim to produce MP4 video or enable interactive preview with keyboard controls.
-    \item \textbf{Customization API:} Provide configuration options using command line flags and YAML files:
-    \begin{itemize}
-        \item \texttt{--speed <factor>}: Animation playback speed
-        \item \texttt{--palette <name>}: Color scheme (dark, light, colorblind)
-        \item \texttt{--mode <type>}: Visualization mode (cfg, memory, trace)
-        \item \texttt{--verbose}: Include IR instruction text
-    \end{itemize}
-\end{itemize}
-
 \subsubsection{User Interface}
 Command-line interface with automatic compilation:
 
@@ -307,6 +221,52 @@ llvmanim recursive.c --mode trace
     --interactive
 \end{verbatim}
 }
+
+\subsubsection{Presentation Layer}
+The Presentation layer renders the scene graph using Manim.
+
+Key operations:
+\begin{itemize}
+    \item \textbf{Manim Code Generation:} Translate scene graph into Python code defining a Manim \texttt{Scene} class. Visual elements become \texttt{Mobject} instances with animation commands.
+    \item \textbf{Rendering Pipeline:} Invoke Manim to produce MP4 video or enable interactive preview with keyboard controls.
+    \item \textbf{Customization API:} Provide configuration options using command line flags and YAML files:
+    \begin{itemize}
+        \item \texttt{--speed <factor>}: Animation playback speed
+        \item \texttt{--palette <name>}: Color scheme (dark, light, colorblind)
+        \item \texttt{--mode <type>}: Visualization mode (cfg, memory, trace)
+        \item \texttt{--verbose}: Include IR instruction text
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Transformation Layer}
+The Transformation layer maps LLVM constructs to an intermediate scene graph for Manim rendering.
+
+Key operations:
+\begin{itemize}
+    \item \textbf{Scene Graph Construction:} Create hierarchical representation where nodes correspond to visual elements (basic blocks, stack frames, memory cells) with properties for position, appearance, and timing.
+    \item \textbf{Layout Algorithm:} Apply hierarchical layout to position CFG nodes while minimizing edge crossings and maintaining logical flow direction. We use a modified Sugiyama framework with constraints for common patterns like if-else branches and loop back-edges.
+    \item \textbf{Instruction-to-Animation Mapping:} Define animation primitives for each LLVM instruction:
+    \begin{itemize}
+        \item \texttt{alloca}: Create stack frame with variable label
+        \item \texttt{load}/\texttt{store}: Animate arrow to/from memory location
+        \item \texttt{call}: Push new stack frame with fade-in
+        \item \texttt{ret}: Pop stack frame with fade-out
+        \item \texttt{br}: Highlight control flow edge with color change
+    \end{itemize}
+    \item \textbf{Timing Coordination:} Calculate timing offsets for animation events (default 1 second per instruction, user-configurable).
+\end{itemize}
+
+\subsubsection{Ingestion Layer}
+The Ingestion layer extracts program structure from LLVM IR. We use the \texttt{llvmlite} Python binding to parse .ll files generated by clang with the \texttt{-g} flag for debug metadata.
+
+Key operations:
+\begin{itemize}
+    \item \textbf{IR Parsing:} Load LLVM modules and extract functions, basic blocks, and instructions.
+    \item \textbf{Control Flow Extraction:} Build CFGs by analyzing branch instructions and identifying successor relationships between blocks.
+    \item \textbf{Metadata Collection:} Extract debug information like source line numbers, variable names, and types from LLVM debug intrinsics.
+    \item \textbf{Memory Operation Identification:} Catalog memory-related instructions including \texttt{load}, \texttt{store}, \texttt{alloca}, and \texttt{call} for tracking memory access patterns and stack operations.
+    \item \textbf{Output:} Structured representation with CFG, instruction list, and metadata stored in Python dictionaries mapping basic block IDs to instruction sequences.
+\end{itemize}
 
 The tool compiles .c/.cpp files to LLVM IR automatically or processes .ll files directly. Error messages indicate unsupported features with workarounds.
 
