@@ -66,11 +66,17 @@ The Ingestion layer extracts program structure from LLVM IR. We use the \texttt{
 
 Key operations:
 \begin{itemize}
-    \item \textbf{IR Parsing:} Load LLVM modules and extract functions, basic blocks, and instructions.
-    \item \textbf{Control Flow Extraction:} Build CFGs by analyzing branch instructions and identifying successor relationships between blocks.
-    \item \textbf{Metadata Collection:} Extract debug information like source line numbers, variable names, and types from LLVM debug intrinsics.
+    \item \textbf{IR Parsing \& Metadata Extraction:} Load LLVM modules and extract functions, basic blocks, and instructions. Extract debug information like source line numbers, variable names, and types from LLVM debug intrinsics.
     \item \textbf{Memory Operation Identification:} Catalog memory-related instructions including \texttt{load}, \texttt{store}, \texttt{alloca}, and \texttt{call} for tracking memory access patterns and stack operations.
+    \item \textbf{Control Flow Extraction:} Use LLVM built-in static analysis tools (e.g \texttt{-opt} passes) to extract control-flow data from the IR.
+    \item \textbf{Timing Data Extraction (Optional):} Extract instruction-level timing data from LLVM profiling tools---e.g \texttt{llvm-xray}\cite{llvm_xray}---to enable performance-based animation timing.
     \item \textbf{Output:} Structured representation with CFG, instruction list, and metadata stored in Python dictionaries mapping basic block IDs to instruction sequences.
 \end{itemize}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\linewidth]{MockOut}}
+\caption{Mock output of LLVManim showing a basic increment operation.}
+\label{fig:mock_output}
+\end{figure}
 
 The tool compiles .c/.cpp files to LLVM IR automatically or processes .ll files directly. Error messages indicate unsupported features with workarounds.
