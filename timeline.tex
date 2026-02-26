@@ -11,19 +11,25 @@
 \hline
 \rowcolor[HTML]{4472C4}
 \textcolor{white}{\textbf{Week}} & \textcolor{white}{\textbf{Task}} \\ \hline
-$W_1$    [$2/08 - 2/14$] & $\bullet$ Project proposal draft complete.\newline
+$W_1$    [$2/08 - 2/14$] & $\bullet$ Project proposal draft complete. \newline
                            $\bullet$ Development environment setup. \\ \hline
 $W_2$    [$2/15 - 2/21$] & $\bullet$ LLVM Parsing \\ \hline
-$W_3$    [$2/22 - 2/28$] & $\bullet$ Project Architecture Revision\newline
+$W_3$    [$2/22 - 2/28$] & $\bullet$ Project Architecture Revision \newline
                            $\bullet$ Stack Frame Animation \\ \hline
-$W_4$    [$3/01 - 3/07$] & $\bullet$ Project Repository Submission\newline
-                           $\bullet$ Heap Animation \\ \hline
-$W_5$    [$3/08 - 3/14$] & $\bullet$ User Interface\\ \hline
-$W_6$    [$3/15 - 3/21$] & $\bullet$ Interactive feature: Step,Pause \\ \hline
-$W_7$    [$3/22 - 3/28$] & $\bullet$ Animation Speed and Color \\ \hline
-$W_8$    [$3/29 - 4/04$] & $\bullet$ Code Testing \\ \hline
-$W_9$    [$4/04 - 4/10$] & $\bullet$ Code Testing\\ \hline
-$W_{10}$ [$4/11 - 4/17$] & $\bullet$ Additional Feature\\ \hline
+$W_4$    [$3/01 - 3/07$] & $\bullet$ Project Repository Submission \newline
+                           $\bullet$ Mohammad/Ben: Parse LLVM IR with llvmlite; extract functions, basic blocks, instructions. \newline
+                           $\bullet$ Lily/Ebenezer: Build clean internal program model (CFG + metadata). \\ \hline
+$W_5$    [$3/08 - 3/14$] & $\bullet$ Ebenezer/Lily: Implement CLI with automatic clang compilation. \newline
+                           $\bullet$ Mohammad/Ben: Convert CFG data into initial scene graph structure. \\ \hline
+$W_6$    [$3/15 - 3/21$] & $\bullet$ Ben: Finalize scene graph design (nodes, edges, animation events). \newline
+                           $\bullet$ Implement layout algorithm and timing coordination.\\ \hline
+$W_7$    [$3/22 - 3/28$] & $\bullet$ Ben: Generate Manim code for CFG mode. \newline
+                           $\bullet$ Lily: Deliver first end-to-end rendered animation. \\ \hline
+$W_8$    [$3/29 - 4/04$] & $\bullet$ Ebenezer: Extend scene graph for stack and memory modeling. \newline
+                           $\bullet$ Animate alloca, load, store, call, ret. \\ \hline
+$W_9$    [$4/04 - 4/10$] & $\bullet$ Mohammad: Implement trace mode with instruction highlighting and speed control. \\
+$W_{10}$ [$4/11 - 4/17$] & $\bullet$ All: Add advanced customization (palette, layout, YAML) and pause/step interactivity. \newline 
+                           $\bullet$ ALL; integrate stretch feature (lightweight GUI or IR inspection), finalize docs and demos. \\ \hline 
 \end{tabularx}
 \vspace{0.1cm}
 \caption{Projected timeline for LLVManim Development.}
