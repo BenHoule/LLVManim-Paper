@@ -1,0 +1,40 @@
+\definecolor{listingbg}{gray}{0.97}
+\definecolor{listingrule}{gray}{0.80}
+\definecolor{listingcomment}{rgb}{0.00,0.40,0.00}
+\definecolor{listingstring}{rgb}{0.55,0.10,0.10}
+\definecolor{listingkeyword}{rgb}{0.00,0.20,0.60}
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    breakatwhitespace=true,
+    columns=fullflexible,
+    keepspaces=true,
+    frame=single,
+    framerule=0.5pt,
+    rulecolor=\color{listingrule},
+    backgroundcolor=\color{listingbg},
+    framesep=5pt,
+    xleftmargin=0.4em,
+    framexleftmargin=0.4em,
+    showstringspaces=false,
+    upquote=true,
+    commentstyle=\color{listingcomment},
+    stringstyle=\color{listingstring},
+    keywordstyle=\color{listingkeyword}\bfseries,
+    captionpos=b,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}
+
+\newcommand{\TODO}[1]{\textbf{TODO (#1): }}
+\newcounter{feedbackcount}
+\newcommand{\feedbackset}[1]{\setcounter{feedbackcount}{#1}}
+\newcommand{\feedback}[2]{%
+    \refstepcounter{feedbackcount}%
+    \begin{quotation}
+      [\arabic{feedbackcount}]---\textit{#1}
+    \end{quotation}%
+    \ifstrempty{#2}{}{%
+        \noindent #2\par
+    }%
+}
+\newcommand{\feedbackdivider}{\noindent\hrulefill\par}

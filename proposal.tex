@@ -1,9 +1,11 @@
+% !TeX program = pdflatex
 \documentclass[conference]{IEEEtran}
-\IEEEoverridecommandlockouts
+% \IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
+\usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage[table,xcdraw,dvipsnames]{xcolor}
@@ -13,25 +15,12 @@
 \usepackage{array}
 \usepackage{colortbl}
 \usepackage{etoolbox}
-
-\newcommand{\TODO}[1]{\textbf{TODO (#1): }}
-\newcounter{feedbackcount}
-\newcommand{\feedbackset}[1]{\setcounter{feedbackcount}{#1}}
-\newcommand{\feedback}[2]{%
-    \refstepcounter{feedbackcount}%
-    \begin{quotation}
-      [\arabic{feedbackcount}]---\textit{#1}
-    \end{quotation}%
-    \ifstrempty{#2}{}{%
-        \noindent #2\par
-    }%
-}
-\newcommand{\feedbackdivider}{\noindent\hrulefill\par}
+\usepackage{listings}
+\usepackage{LLVManim}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \graphicspath{ {./images/} }
-
 
 \begin{document}
 
@@ -80,32 +69,26 @@ $\bullet$~Applied computing $\rightarrow$ Education $\rightarrow$ Interactive le
 program visualization, code animation, LLVM, static analysis, control flow graphs, memory visualization, educational tools, Manim, compiler infrastructure, presentation tools
 \end{IEEEkeywords}
 
-\section{Introduction}
-\input{1_introduction/introduction.tex}
+\input{1_introduction/introduction}
+\input{2_existing_tools/existing_tools}
+\input{3_manim/manim}
+\input{4_llvmanim/llvmanim}
+\input{5_risk_evaluation/risk_evaluation}
 
-\section{Existing Tools}
-\input{2_existing_tools/existing_tools.tex}
-
-\section{Manim}
-\input{3_manim/manim.tex}
-
-\section{LLVManim}
-\input{4_llvmanim/llvmanim.tex}
-
-\section{Risk Evaluation}
-\input{5_risk_evaluation/risk_evaluation.tex}
-
+\begin{samepage}
 \section*{Projected Timeline}
-\input{timeline.tex}
+\input{timeline}
+\end{samepage}
 
 \section*{Acknowledgment}
 We would like to thank Dr. James Daly for his guidance, feedback, and support throughout the development of this work.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
+
 \newpage
 \section*{Feedback}
-\input{feedback.tex}
+\input{feedback}
 \vspace{2em}
 \textbf{HOURS SPENT:} \textasciitilde 40 Hours
 
