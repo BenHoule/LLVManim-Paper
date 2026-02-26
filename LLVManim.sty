@@ -29,10 +29,12 @@
 \newcounter{feedbackcount}
 \newcommand{\feedbackset}[1]{\setcounter{feedbackcount}{#1}}
 \newcommand{\feedback}[2]{%
+    {\small
     \refstepcounter{feedbackcount}%
     \begin{quotation}
       [\arabic{feedbackcount}]---\textit{#1}
     \end{quotation}%
+    }
     \ifstrempty{#2}{}{%
         \noindent #2\par
     }%
