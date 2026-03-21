@@ -1,18 +1,17 @@
-\section{LLVManim}
-By providing a solution to quickly and easily create data-based animations,
-LLVManim aims to bridge the gap between these two concepts:
+\section{LLVManim System Design}
+LLVManim bridges the gap between two observations:
 \begin{enumerate}
-    \item Methods exist to quickly generate code visualizations, but they are
-    unappealing for presentation purposes.
-    \item The Manim library can make visually impressive animations, but using
-    it is time consuming.
+    \item Methods exist to quickly generate code visualizations, but they produce
+    output that is unappealing for presentation purposes.
+    \item The Manim library can produce visually impressive animations, but using
+    it requires significant manual effort.
 \end{enumerate}
-Educators and tech leads alike can rejoice in spicing up their PowerPoints
-without needing to compromise between style and accessibility.
+By automating the translation from LLVM IR to Manim scenes, educators
+and tech leads alike can produce presentation-ready visualizations without
+needing to compromise between style and accessibility.
 
-\subsection{Project Goals}
+\subsection{Design Goals}
 \input{4_llvmanim/project_goals.tex}
 
-
-\subsection{Implementation Plan}
+\subsection{Architecture}
 \input{4_llvmanim/implementation_plan.tex}

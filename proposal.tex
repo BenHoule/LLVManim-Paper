@@ -1,7 +1,5 @@
 % !TeX program = pdflatex
 \documentclass[conference]{IEEEtran}
-% \IEEEoverridecommandlockouts
-% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
@@ -56,7 +54,7 @@ ahmedzubair16dec@gmail.com}
 \maketitle
 
 \begin{abstract}
-LLVManim is a code visualization tool that generates aesthetically pleasing animations for information control flow and memory allocations. Utilizing the well-supported Manim library alongside LLVM’s built-in static analysis tools and wide language support, LLVManim is able to quickly create informative, professionally styled animations for any code that compiles to LLVM IR. The primary objective of the project is to create an alternative to the unappealing “programmer art” and visual clutter that many standard tools suffer from, instead focusing on an output more suitable for presentations or educational purposes.
+LLVManim is a code visualization tool that generates aesthetically pleasing animations of control flow and memory operations from LLVM IR. Over the course of a single semester, we designed and implemented a three-layer pipeline---Ingestion, Transformation, and Presentation---that parses \texttt{.ll} files with \texttt{llvmlite}, derives a typed intermediate scene graph, and renders animations through Manim Community Edition. The finished tool supports three animation modes (basic stack view, rich IR spotlight, and a three-column SSA panel), a CFG traversal animation driven by Graphviz layout, and machine-readable JSON and DOT export. The implementation comprises 26 Python modules validated by 302 automated tests at 84\% line coverage, enforced by a four-stage quality gate (Ruff, Pyright, import-linter, pytest). LLVManim demonstrates that presentation-quality program visualization can be made accessible through a simple command-line interface, eliminating the need for manual Manim scripting or post-processing of LLVM's utilitarian graph output.
 \end{abstract}
 
 \begin{IEEEconcepts}
@@ -73,12 +71,9 @@ program visualization, code animation, LLVM, static analysis, control flow graph
 \input{2_existing_tools/existing_tools}
 \input{3_manim/manim}
 \input{4_llvmanim/llvmanim}
-\input{5_risk_evaluation/risk_evaluation}
-
-\begin{samepage}
-\section*{Projected Timeline}
-\input{timeline}
-\end{samepage}
+\input{6_results/results}
+\input{7_discussion/discussion}
+\input{8_conclusion/conclusion}
 
 \section*{Acknowledgment}
 We would like to thank Dr. James Daly for his guidance, feedback, and support throughout the development of this work.
@@ -87,9 +82,14 @@ We would like to thank Dr. James Daly for his guidance, feedback, and support th
 \bibliography{references}
 
 \newpage
-\section*{Feedback}
+\appendix
+\section{Projected Timeline}\label{app:timeline}
+\input{timeline}
+
+\newpage
+\section{Feedback}\label{app:feedback}
 \input{feedback}
 \vspace{2em}
-\textbf{HOURS SPENT:} \textasciitilde 40 Hours
+\textbf{HOURS SPENT:} \textasciitilde 200 Hours
 
 \end{document}
