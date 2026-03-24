@@ -6,12 +6,12 @@ digraph data_model_core {
     bgcolor="white";
     ranksep=0.7;
     nodesep=0.5;
-    label="Core & Block Models  (llvmanim.transform.models)";
+    label="Block & Event Models  (llvmanim.transform.models)";
     labelloc=t; fontsize=16; fontcolor="#e65100"; fontname="Helvetica";
 
-    /* ── Core Event Model ────────────────────── */
+    /* ── Event Model ────────────────────── */
     subgraph cluster_events {
-        label="Core Event Model";
+        label="Event Model";
         style="filled,rounded"; fillcolor="#fff3e0"; color="#fb8c00";
         fontname="Helvetica"; fontsize=14; fontcolor="#e65100";
         margin=16;
