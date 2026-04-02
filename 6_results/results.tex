@@ -56,25 +56,6 @@ CFG edge extraction supports five terminator types: \texttt{br}, \texttt{switch}
 \subsection{Animation Modes}
 LLVManim provides three stack-focused animation modes and one graph-based mode, each reproducible with a single CLI command. Fig.~\ref{fig:animation_modes} shows representative frames from all three stack modes.
 
-\textbf{Basic mode} (\texttt{--ir-mode basic}) renders a minimal stack-only view. Each IR instruction triggers a per-cell badge flash on the corresponding stack slot, providing a clean visual pulse of execution without additional clutter. This mode is best suited for audiences who need only a high-level sense of execution flow, such as introductory lectures or quick demonstrations, since it strips away all source-level detail and focuses purely on the call stack.
-\needspace{2\baselineskip}
-\begin{lstlisting}[language=bash,gobble=0]
-uv run llvmanim input.ll --animate \
-    --ir-mode basic --outdir out/
-\end{lstlisting}
-
-\textbf{Rich mode} (\texttt{--ir-mode rich}) extends the basic view with a two-column layout. An IR source panel on the left displays the current function's instructions while a spotlight cursor tracks the executing line, giving the audience both the ``what'' (the stack) and the ``where'' (the source). This mode is particularly valuable when the presenter wants to walk through specific IR constructs---for example, showing how a series of \texttt{alloca} and \texttt{store} instructions initialize local variables before a loop body executes. The spotlight cursor provides a natural focal point that guides the viewer's attention through the code.
-\begin{lstlisting}[language=bash,gobble=0]
-uv run llvmanim input.ll --animate \
-    --ir-mode rich --outdir out/
-\end{lstlisting}
-
-\textbf{Rich-SSA mode} (\texttt{--ir-mode rich-ssa}) takes the rich layout a step further with a dedicated third column for SSA values (IR Source $\mid$ SSA Values $\mid$ Stack). The center panel displays the symbolic result of each binary operation, comparison, or load as it executes, making it possible to follow data dependencies without mentally resolving \texttt{\%}-names. This is the most detailed mode and targets audiences already familiar with SSA form---for instance, a compiler course where students need to see how \texttt{\%4 = icmp slt i32 \%2, \%3} evaluates during a loop iteration.
-\begin{lstlisting}[language=bash,gobble=0]
-uv run llvmanim input.ll --animate \
-    --ir-mode rich-ssa --outdir out/
-\end{lstlisting}
-
 \begin{figure*}[!htbp]
 \centering
 \begin{subfigure}[t]{0.49\textwidth}
@@ -101,6 +82,25 @@ uv run llvmanim input.ll --animate \
 \caption{The three stack-focused animation modes, shown with cropped frames from actual LLVManim output.}
 \label{fig:animation_modes}
 \end{figure*}
+
+\textbf{Basic mode} (\texttt{--ir-mode basic}) renders a minimal stack-only view. Each IR instruction triggers a per-cell badge flash on the corresponding stack slot, providing a clean visual pulse of execution without additional clutter. This mode is best suited for audiences who need only a high-level sense of execution flow, such as introductory lectures or quick demonstrations, since it strips away all source-level detail and focuses purely on the call stack.
+\needspace{2\baselineskip}
+\begin{lstlisting}[language=bash,gobble=0]
+uv run llvmanim input.ll --animate \
+    --ir-mode basic --outdir out/
+\end{lstlisting}
+
+\textbf{Rich mode} (\texttt{--ir-mode rich}) extends the basic view with a two-column layout. An IR source panel on the left displays the current function's instructions while a spotlight cursor tracks the executing line, giving the audience both the ``what'' (the stack) and the ``where'' (the source). This mode is particularly valuable when the presenter wants to walk through specific IR constructs---for example, showing how a series of \texttt{alloca} and \texttt{store} instructions initialize local variables before a loop body executes. The spotlight cursor provides a natural focal point that guides the viewer's attention through the code.
+\begin{lstlisting}[language=bash,gobble=0]
+uv run llvmanim input.ll --animate \
+    --ir-mode rich --outdir out/
+\end{lstlisting}
+
+\textbf{Rich-SSA mode} (\texttt{--ir-mode rich-ssa}) takes the rich layout a step further with a dedicated third column for SSA values (IR Source $\mid$ SSA Values $\mid$ Stack). The center panel displays the symbolic result of each binary operation, comparison, or load as it executes, making it possible to follow data dependencies without mentally resolving \texttt{\%}-names. This is the most detailed mode and targets audiences already familiar with SSA form---for instance, a compiler course where students need to see how \texttt{\%4 = icmp slt i32 \%2, \%3} evaluates during a loop iteration.
+\begin{lstlisting}[language=bash,gobble=0]
+uv run llvmanim input.ll --animate \
+    --ir-mode rich-ssa --outdir out/
+\end{lstlisting}
 
 \textbf{CFG traversal} (\texttt{--cfg-animate}) renders an animated walk through the control-flow graph, using Graphviz DOT layout for node positions and a runtime trace for the traversal order:
 \begin{lstlisting}[language=bash,gobble=0]
@@ -138,17 +138,17 @@ Line coverage stands at 84\% across the entire \texttt{llvmanim} package. Fig.~\
     \item \textbf{pytest}: Full test suite execution with coverage reporting
 \end{enumerate}
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[width=\linewidth]{01_coverage_by_module}}
+\begin{figure*}[!htbp]
+\centerline{\includegraphics[width=\textwidth]{01_coverage_by_module}}
 \caption{Test coverage by module. Most modules exceed the 80\% threshold; \texttt{render/stack\_renderer} (48\%) and \texttt{render/cfg\_renderer} (62\%) are the primary gaps due to Manim rendering dependencies.}
 \label{fig:coverage_by_module}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[htbp]
-\centerline{\includegraphics[width=\linewidth]{02_tests_per_module}}
+\begin{figure*}[!htbp]
+\centerline{\includegraphics[width=\textwidth]{02_tests_per_module}}
 \caption{Test count per module (298 total). CLI, transform, and ingest modules carry the largest test loads.}
 \label{fig:tests_per_module}
-\end{figure}
+\end{figure*}
 
 \subsection{Codebase Size}
 The LLVManim codebase comprises 3{,}189 lines of Python across 18 modules. Fig.~\ref{fig:lines_of_code} shows the breakdown by layer and module. The Render layer accounts for 42\% of the code, followed by Ingest (25\%), Transform (19\%), and CLI (14\%).
