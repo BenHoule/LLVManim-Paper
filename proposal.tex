@@ -1,4 +1,5 @@
 % !TeX program = pdflatex
+% !TeX options = -shell-escape -interaction=nonstopmode -synctex=1
 \documentclass[conference]{IEEEtran}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
@@ -21,15 +22,11 @@
 \usepackage{afterpage}
 \usepackage{float}
 \usepackage{needspace}
+\usepackage{multicol}
+\usepackage{placeins}
+\usepackage{minted}
+\usemintedstyle{vs} % Choose a style like colorful, friendly, or bw
 \usepackage{LLVManim}
-
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
-\graphicspath{ {./images/} {./images/metrics/} {./generated_images/} }
-\raggedbottom
-\emergencystretch=2em
-\hbadness=10000
-\hfuzz=2pt
 
 \begin{document}
 
@@ -93,14 +90,26 @@ We would like to thank Dr. James Daly for his guidance, feedback, and support th
 \bibliography{references}
 
 \newpage
-\appendices
-\section{Projected Timeline}\label{app:timeline}
-\input{timeline}
+\appendices\onecolumn
+\section{Projected Timeline}
+\label{app:timeline}
+\input{appendix/timeline}
+
+\section{Input File: \texttt{double.ll}}
+\label{app:metrics}
+\input{appendix/code_examples}
 
 \newpage
-\section{Feedback}\label{app:feedback}
-\input{feedback}
+\section{Figures for Metrics}
+\label{app:metrics_figures}
+\input{appendix/metrics_figures}
+
+\twocolumn[\section{Feedback}]
+\label{app:feedback}
+
+\input{appendix/feedback}
 \vspace{2em}
 \textbf{HOURS SPENT:} \textasciitilde 200 Hours
+
 
 \end{document}

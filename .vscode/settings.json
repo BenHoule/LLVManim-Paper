@@ -1,4 +1,32 @@
 {
     "latex-workshop.latex.rootFile.doNotPrompt": true,
-    "latex-workshop.latex.search.rootFiles.include": ["proposal.tex"]
+    "latex-workshop.latex.search.rootFiles.include": ["proposal.tex"],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": ["%DOCFILE%"]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "pdflatex × 2",
+            "tools": ["pdflatex", "pdflatex"]
+        },
+        {
+            "name": "pdflatex → bibtex → pdflatex × 2",
+            "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
+        }
+    ]
 }

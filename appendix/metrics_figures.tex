@@ -1,0 +1,58 @@
+\begin{figure}[H]
+\begin{subfigure}{\textwidth}
+    \centerline{\includegraphics[width=\linewidth, height=0.42\textheight, keepaspectratio]{01_coverage_by_module}}
+    \caption{\parbox{0.65\linewidth}{Test coverage by module. Most modules exceed the 80\% threshold; \texttt{render/stack\_renderer} (48\%) and \texttt{render/cfg\_renderer} (62\%) are the primary gaps due to Manim rendering dependencies.}}
+    \label{fig:coverage_by_module}
+\end{subfigure}
+
+\vspace {1em}
+
+\begin{subfigure}{\textwidth}
+    \centerline{\includegraphics[width=\linewidth, height=0.42\textheight, keepaspectratio]{02_tests_per_module}}
+    \caption{Test count per module (298 total). CLI, transform, and ingest modules carry the largest test loads.}
+    \label{fig:tests_per_module}
+\end{subfigure}
+\caption{Test coverage and test count by module.}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=\textwidth]{03_lines_of_code}}
+\caption{Lines of code by layer (left) and per module (right). The Render layer is the largest due to the Manim animation logic in \texttt{stack\_renderer} and \texttt{cfg\_animation}.}
+\label{fig:lines_of_code}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=\linewidth]{10_pipeline_stage_latency}}
+\caption{Pipeline stage latency for a 50-block CFG (median of 5 runs). Parsing dominates; Transform stages are two orders of magnitude faster.}
+\label{fig:pipeline_latency}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=\linewidth]{05_parse_scaling}}
+\caption{\texttt{parse\_module\_to\_events} scaling. Linear in instruction count---$\Theta(n)$.}
+\label{fig:parse_scaling}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=\linewidth]{06_scene_graph_cfg_scaling}}
+\caption{CFG scene-graph build time vs.\ block count---$\Theta(n)$.}
+\label{fig:cfg_build_scaling}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=\linewidth]{07_trace_scaling}}
+\caption{CFG trace derivation scaling---$\Theta(n)$ for linear chains, $O(n \cdot k)$ with loops.}
+\label{fig:trace_scaling}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=\linewidth]{08_scene_graph_stack_scaling}}
+\caption{Stack scene-graph build time vs.\ call depth---$O(d)$ worst case, sub-linear empirically.}
+\label{fig:stack_build_scaling}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=\linewidth]{09_memory_scaling}}
+\caption{Peak memory allocation vs.\ CFG block count. Both pipelines scale linearly---$\Theta(n)$.}
+\label{fig:memory_scaling}
+\end{figure}
