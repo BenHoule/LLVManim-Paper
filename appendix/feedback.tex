@@ -1,4 +1,7 @@
 {\raggedright
+
+\subsection{\textbf{Pitch}}
+
 % ADDRESSED - Added mock output
 \feedback{The figures are helpful for showing how the existing tools work, but for the proposal make sure you show how you want the visualized code to work. This could be through making a mockup or setting up input for Manim to generate something that looks like what you want. You should also think about the pipeline for what data you are planning on getting from LLVM, how you are going to get it, and how you will feed it into Manim.}
 {}
@@ -8,6 +11,7 @@
 {}
 
 \feedbackdivider
+\subsection{\textbf{Proposal}}
 
 % ADDRESSED - Updated figure 1
 \feedback{This [PythonTutor] figure is unreadable.}
@@ -248,6 +252,49 @@ There are also no sample graphs or tables for the data that is to be collected.}
 {}
 
 \feedbackdivider
+\subsection{\textbf{Architecture}}
+
+% UNADDRESSED
+\feedback{Is [PythonTutor] the only such tool that you were able to find?}
+{}
+
+% ADDRESSED - Reworded section
+\feedback {using}
+{}
+
+% ADDRESSED - Increased DPI and scaled up figures
+\feedback{This figure is borderline unreadable.}
+{}
+
+% ADDRESSED - Trimmed down 3b1b paragraph
+\feedback{I'm not sure how valuable this [3Blue1Brown] paragraph is.  It feels like it should be trimmed down and come before the previous one.}
+{}
+
+% ADDRESSED - Removed trace event mapping metric
+\feedback{How is this different than the IR Instruction Coverage core feature?}
+{}
+
+% ADDRESSED - Updated figures & captions
+\feedback{None of the stuff in the caption is represented in the [architecture] figure.}
+{}
+
+% ADDRESSED - Updated figures & captions
+\feedback{The [architecture] figure doesn't really match the text in section IV-b either.}
+{}
+
+% ADDRESSED - Updated figures
+\feedback{This [mock output] figure is not readable.}
+{}
+
+% ADDRESSED - Added double.ll listing and CLI commands to Appendix C
+\feedback{You also need the input (both the source file to be parsed and the command that produces the output)}
+{}
+
+% PARTIALLY ADDRESSED - LLVMLite is included in some diagrams
+\feedback{[LLVMLite is] also not in your diagram.}
+{}
+
+\feedbackdivider
 
 % ADDRESSED - Increased figure size
 \feedback{This [PythonTutor] figure is hard to read because of how small it is.}
@@ -397,48 +444,6 @@ There are also no sample graphs or tables for the data that is to be collected.}
 
 % ADDRESSED - Updated figures
 \feedback{Figures 1 and 2 remain difficult to read due to scaling. If they are only for motivation, you could replace them with cropped `key region' zoom-ins to show the point without unreadably dense text.}
-{}
-
-\feedbackdivider
-
-% UNADDRESSED
-\feedback{Is [PythonTutor] the only such tool that you were able to find?}
-{}
-
-% ADDRESSED - Reworded section
-\feedback {using}
-{}
-
-% ADDRESSED - Increased DPI and scaled up figures
-\feedback{This figure is borderline unreadable.}
-{}
-
-% ADDRESSED - Trimmed down 3b1b paragraph
-\feedback{I'm not sure how valuable this [3Blue1Brown] paragraph is.  It feels like it should be trimmed down and come before the previous one.}
-{}
-
-% ADDRESSED - Removed trace event mapping metric
-\feedback{How is this different than the IR Instruction Coverage core feature?}
-{}
-
-% ADDRESSED - Updated figures & captions
-\feedback{None of the stuff in the caption is represented in the [architecture] figure.}
-{}
-
-% ADDRESSED - Updated figures & captions
-\feedback{The [architecture] figure doesn't really match the text in section IV-b either.}
-{}
-
-% ADDRESSED - Updated figures
-\feedback{This [mock output] figure is not readable.}
-{}
-
-% ADDRESSED - Added double.ll listing and CLI commands to Appendix C
-\feedback{You also need the input (both the source file to be parsed and the command that produces the output)}
-{}
-
-% PARTIALLY ADDRESSED - LLVMLite is included in some diagrams
-\feedback{[LLVMLite is] also not in your diagram.}
 {}
 
 }
