@@ -19,15 +19,15 @@ The following proposed features were not implemented:
 
     \item \textbf{Interactive stepping and pause:} Interactive playback was deprioritized in favor of richer static animation modes. Manim CE's rendering model produces video files rather than interactive sessions, making pause/step less natural.
 
-    \item \textbf{YAML configuration and --palette:} Fine-grained customization via YAML files and named color palettes was deferred. The current CLI provides \texttt{--speed} and \texttt{--format} as the primary customization points.
+    \item \textbf{YAML configuration and --palette:} Fine-grained customization via YAML files and named color palettes was deferred. The current CLI provides \texttt{-{}-speed} and \texttt{-{}-format} as the primary customization points.
 
     \item \textbf{GUI:} A graphical interface was listed as a stretch goal and was not pursued given the limited timeline.
 \end{itemize}
 
 Conversely, two capabilities were implemented that were \textit{not} in the original proposal:
 \begin{itemize}
-    \item \textbf{Rich-SSA three-column animation:} The \texttt{--ir-mode rich-ssa} mode displays symbolic SSA values alongside IR source and stack state, providing deeper instruction-level insight than originally~planned.
-    \item \textbf{CFG traversal animation:} The \texttt{--cfg-animate} mode renders an animated walk through the control-flow graph using Graphviz DOT layout, a feature that emerged from explorations in the sandbox environment.
+    \item \textbf{Rich-SSA three-column animation:} The \texttt{-{}-ir-mode rich-ssa} mode displays symbolic SSA values alongside IR source and stack state, providing deeper instruction-level insight than originally~planned.
+    \item \textbf{CFG traversal animation:} The \texttt{-{}-cfg-animate} mode renders an animated walk through the control-flow graph using Graphviz DOT layout, a feature that emerged from explorations in the sandbox environment.
 \end{itemize}
 
 \subsection{Known Limitations}
@@ -40,7 +40,7 @@ The current implementation has several known limitations:
 
     \item \textbf{No heap visualization:} The tool visualizes stack operations but does not yet render heap allocations or pointer-based data structures.
 
-    \item \textbf{Manim render times:} Full-quality Manim renders can take significant time for programs with many instructions. The \texttt{--speed} flag and low-quality preview mode help during development, but render time remains a practical constraint for large programs.
+    \item \textbf{Manim render times:} Full-quality Manim renders can take significant time for programs with many instructions. The \texttt{-{}-speed} flag and low-quality preview mode help during development, but render time remains a practical constraint for large programs.
 \end{itemize}
 
 \subsection{Lessons Learned}

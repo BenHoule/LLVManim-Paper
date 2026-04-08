@@ -35,7 +35,7 @@ Fig.~\ref{fig:cli_dispatch} traces the complete CLI dispatch flow, showing how e
 
 \begin{figure*}[htbp]
 \centerline{\includegraphics[width=\textwidth]{05_cli_dispatch}}
-\caption{CLI dispatch flow. Each command flag (\texttt{--json}, \texttt{--draw}, \texttt{--animate}, \texttt{--cfg-animate}) shares the Ingest pipeline and branches to the appropriate Transform and Render stages.}
+\caption{CLI dispatch flow. Each command flag (\texttt{-{}-json}, \texttt{-{}-draw}, \texttt{-{}-animate}, \texttt{-{}-cfg-animate}) shares the Ingest pipeline and branches to the appropriate Transform and Render stages.}
 \label{fig:cli_dispatch}
 \end{figure*}
 
@@ -49,7 +49,7 @@ The Ingestion layer extracts program structure from LLVM IR. It uses the \texttt
 
     \item \textbf{\texttt{analysis\_metadata\_io.py}:} Loads and saves dominator-tree and loop-analysis metadata as~JSON, supporting round-trip import and export via CLI flags.
 
-    \item \textbf{\texttt{trace\_io.py}:} Reads and writes runtime path traces as JSON (\texttt{--import-trace} / \texttt{--export-trace}), used for overlay visualization in CFG traversal animations.
+    \item \textbf{\texttt{trace\_io.py}:} Reads and writes runtime path traces as JSON (\texttt{-{}-import-trace} / \texttt{-{}-export-trace}), used for overlay visualization in CFG traversal animations.
 
     \item \textbf{\texttt{dot\_layout.py}:} Parses a Graphviz DOT file produced by \texttt{opt -passes=dot-cfg} and computes a \texttt{DotLayout} with node positions and edge routes for the CFG animation scene.
 
@@ -79,18 +79,18 @@ The Render layer renders the scene graph using Manim Community Edition\cite{mani
 \begin{itemize}
     \item \textbf{Animation Modes:} The tool supports three stack-rendering modes, all driven by \texttt{StackRenderer}---a \texttt{CommandDrivenScene} subclass. Each mode consumes the same \texttt{AnimationCommand} records (detailed in Fig.~\ref{fig:data_model}) but presents progressively more detail.
     \begin{itemize}
-        \item \texttt{--ir-mode basic}: Stack-only view with per-cell badge flash for each instruction.
-        \item \texttt{--ir-mode rich}: Two-column layout with an IR source panel and a moving spotlight cursor alongside the stack view.
-        \item \texttt{--ir-mode rich-ssa}: Three-column layout (IR Source $\mid$ SSA Values $\mid$ Stack) showing computed results for binary operations, comparisons, and loads.
+        \item \texttt{-{}-ir-mode basic}: Stack-only view with per-cell badge flash for each instruction.
+        \item \texttt{-{}-ir-mode rich}: Two-column layout with an IR source panel and a moving spotlight cursor alongside the stack view.
+        \item \texttt{-{}-ir-mode rich-ssa}: Three-column layout (IR Source $\mid$ SSA Values $\mid$ Stack) showing computed results for binary operations, comparisons, and loads.
     \end{itemize}
 
-    \item \textbf{CFG Traversal:} \texttt{--cfg-animate} renders an animated walk through the control-flow graph using \texttt{CFGRenderer} (another \texttt{CommandDrivenScene} subclass) with DOT-derived node positions (\texttt{--dot-cfg}) and a runtime trace (\texttt{--import-trace}). If no trace is provided, a static DFS trace is derived automatically.
+    \item \textbf{CFG Traversal:} \texttt{-{}-cfg-animate} renders an animated walk through the control-flow graph using \texttt{CFGRenderer} (another \texttt{CommandDrivenScene} subclass) with DOT-derived node positions (\texttt{-{}-dot-cfg}) and a runtime trace (\texttt{-{}-import-trace}). If no trace is provided, a static DFS trace is derived automatically.
 
     \item \textbf{Export:} Static artifacts complement the animated output.
     \begin{itemize}
-        \item \texttt{--json}: Writes a~machine-readable scene graph (\texttt{scene\_graph.json}).
-        \item \texttt{--draw}: Writes \texttt{cfg\_main.dot} and, when Graphviz is available, a~rendered \texttt{cfg\_main.png}.
+        \item \texttt{-{}-json}: Writes a~machine-readable scene graph (\texttt{scene\_graph.json}).
+        \item \texttt{-{}-draw}: Writes \texttt{cfg\_main.dot} and, when Graphviz is available, a~rendered \texttt{cfg\_main.png}.
     \end{itemize}
 
-    \item \textbf{Rendering:} Manim CE renders MP4 or GIF output. GIF conversion uses an \texttt{ffmpeg} palette workflow to reduce peak memory usage. The \texttt{--preview} flag opens the rendered animation in a viewer.
+    \item \textbf{Rendering:} Manim CE renders MP4 or GIF output. GIF conversion uses an \texttt{ffmpeg} palette workflow to reduce peak memory usage. The \texttt{-{}-preview} flag opens the rendered animation in a viewer.
 \end{itemize}
