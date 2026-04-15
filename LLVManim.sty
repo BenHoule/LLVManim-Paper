@@ -36,17 +36,17 @@
 % Command for creating feedback/response blocks
 \newcounter{feedbackcount}
 \newcommand{\feedbackset}[1]{\setcounter{feedbackcount}{#1}}
-\newcommand{\feedback}[2]{%
+\newcommand{\feedback}[2]{
     {\small
-    \refstepcounter{feedbackcount}%
+    \refstepcounter{feedbackcount}
     \begin{quotation}
       [\arabic{feedbackcount}]---\textit{``#1''}
-    \end{quotation}%
-    }%
-    \ifstrempty{#2}{}{%
-        \noindent $Response_{[\arabic{feedbackcount}]}$---#2\par
+    \end{quotation}
+    }
+    \ifstrempty{#2}{}{
+        \noindent\raggedright $Response_{[\arabic{feedbackcount}]}$---#2\par
         \vspace{1em}
-    }%
+    }
 }
 
 % For separating feedback for the same submission from different reviewers
@@ -57,7 +57,7 @@
   \vspace{.5\baselineskip} {
     \resizebox{\linewidth}{2ex}{
       \begin{tikzpicture}
-        \node  (C) at (0,0) {};
+        \node (C) at (0,0) {};
         \node (D) at (9,0) {};
         \path (C) to [ornament=88] (D);
       \end{tikzpicture}

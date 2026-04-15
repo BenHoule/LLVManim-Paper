@@ -1,4 +1,4 @@
-LLVManim provides three stack-focused animation modes and one graph-based mode, each reproducible with a single CLI command. Fig.~\ref{fig:animation_modes} shows representative frames from all three stack modes. The LLVM~IR input file (\texttt{double.ll}) used to produce all sample outputs is listed in Appendix~\ref{app:metrics}.
+LLVManim provides three stack-focused animation modes and one graph-based mode, each reproducible with a single CLI command. The stack-focused modes (basic, rich, rich-SSA) share a common layout and animation style, with increasing levels of IR detail. The graph-based mode renders an animated traversal of the control-flow graph using Graphviz layout and a runtime trace for the traversal order. Each mode is designed to target different presentation contexts and audience familiarity levels, allowing users to choose the appropriate level of detail for their needs. The following sections describe each mode in detail, along with example CLI commands for generating the animations.
 
 \begin{figure*}[t]
 \centering

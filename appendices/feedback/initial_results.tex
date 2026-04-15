@@ -24,11 +24,11 @@
 
 \feedbackdivider
 
-%! UNADDRESSED
+% ADDRESSED - Updated wording
 \feedback{What is this [sentence in section 1] referring to? It's better to clarify the subject.}
 {}
 
-%! UNADDRESSED
+% ADDRESSED - Updated wording
 \feedback{You are using acronyms without defining them first.}
 {}
 
@@ -36,9 +36,11 @@
 \feedback{Why are these in a different color? The light gray makes it harder to read on a white background.}
 {}
 
-%! UNADDRESSED
-\feedback{This could be a little more clear. Does this mean that the feature has already been implemented or that it's being worked on.}
-{}
+% ADDRESSED(?) - Honestly not sure how they were confused by this
+\feedback{This [Table 1] could be a little more clear. Does this mean that the feature has already been implemented or that it's being worked on.}
+{
+  A checkmark means the feature has been implemented and a cross means it has not been implemented (and is theoretically being worked on).
+}
 
 % ADDRESSED - Updated figures
 \feedback{It's hard to make out the [LLVManim output] code because it's too small.}
@@ -46,49 +48,51 @@
 
 \feedbackdivider
 
-%! UNADDRESSED
+% ADDRESSED - Nothing to address, just a positive comment
 \feedback{This is a strong paper that clearly shows significant progress and a working system. The project demonstrates a fully functional pipeline, multiple visualization modes, and solid testing infrastructure, which aligns well with the assignment's goal of showing that your methodology and tools are operational.}
 {}
 
-%! UNADDRESSED
+% REFUTED
 \feedback{One area to improve is how the results are framed. The section reads more like a final report rather than “initial results,” so it would help to explicitly connect what has been implemented to your original project goals and what you intended to achieve at this stage.}
-{}
+{
+  It is worded this way because the report is meant to be a precursor to the final report, and the results are meant to be a demonstration of the progress made so far. We include a table of the project goals and how they have been met in the results section.
+}
 
 %! UNADDRESSED
 \feedback{Since the goal of the project is to improve presentation and understanding, it would strengthen the report to include some discussion of how effective the visualizations are for users, even if only informally.}
 {}
 
-%! UNADDRESSED
+% ADDRESSED(?) - Updated figures
 \feedback{The figures showing the animation outputs are clear and helpful, but improving readability and consistency across all figures would make the document stronger overall.}
 {}
 
-%! UNADDRESSED
+% ADDRESSED - Nothing to address, just a positive comment
 \feedback{The reproducibility and testing aspects are very well done and clearly demonstrate strong development practices.}
-{}
-
-%! UNADDRESSED
-\feedback{Overall, this is a well-developed and technically solid initial results paper. Strengthening the connection between your results and the project's intended impact would make it even more compelling.}
 {}
 
 \feedbackdivider
 
-%! UNADDRESSED
+% ADDRESSED - Repeated feedback
 \feedback{How are the most common instructions determined?}
-{}
+{
+  See Response$_{[74]}$.
+}
 
-%! UNADDRESSED
+% REFUTED
 \feedback{Why inlude uv run in CLI example, when that will only work from the project source?}
-{}
+{
+  Because the current implementation only supports running from the project source, and we wanted to show the actual command that would be used. We will update related instructions for the globally installed tool when such a feature is implemented.
+}
 
 %! UNADDRESSED
 \feedback{These packages will be different by distro, so I would either specify the distro that these packages are for, or just the names of the libraries and let the user determine the package name.}
 {}
 
-%! UNADDRESSED
+% ADDRESSED - Updated code examples appendix
 \feedback{Consider including double.c to help the understanding of those who are less familiar with LLVM.}
 {}
 
-%! UNADDRESSED
+% ADDRESSED - Updated code examples appendix
 \feedback{Line numbering breaks page margins.}
 {}
 
@@ -100,20 +104,20 @@
 \feedback{It is also difficult to tell the difference between the green and orange in grey-scale.}
 {}
 
-%! UNADDRESSED
+% ADDRESSED - Added architecture section to feedback
 \feedback{Does not address feedback from Proofreading - Architecture}
 {}
 
 \feedbackdivider
 
-%! UNADDRESSED
+% REFUTED
 \feedback{In addition to ordering issues, the document occasionally shifts between proposal-style language and results-style language, which makes it feel slightly inconsistent in tone. Some sections describe planned behavior, while others describe completed implementation. Keeping the tense consistent would improve overall readability and make the integration feel more polished.}
-{}
+{
+  This is a direct result of the fact that the project is ongoing and began as a proposal. Some behavior is still being planned and some behavior has already been implemented, so the tense shifts accordingly.
+}
 
 %! UNADDRESSED
-\feedback{Another improvement would be to briefly summarize the full workflow in one paragraph near the
-end of the introduction. While each section explains its role well, a single high-level
-“start-to-finish” explanation would help make it easier to understand how all parts connect.}
+\feedback{Another improvement would be to briefly summarize the full workflow in one paragraph near the end of the introduction. While each section explains its role well, a single high-level “start-to-finish” explanation would help make it easier to understand how all parts connect.}
 {}
 
 %! UNADDRESSED
@@ -136,9 +140,11 @@ end of the introduction. While each section explains its role well, a single hig
 \feedback{Also, it would be useful to specify whether the scene graph format is stable or experimental, since this affects how safely other developers could rely on it.}
 {}
 
-%! UNADDRESSED
+% REFUTED
 \feedback{Beyond runtime vs development dependencies, it would be helpful to describe version sensitivity as for example, whether specific versions of Python, LLVM, or Manim are required. The document mentions Python 3.12, but similar version notes for other tools would reduce setup uncertainty. Additionally, identifying optional dependencies (such as Graphviz for visualization export) separately from required ones would make installation expectations clearer.}
-{}
+{
+  Version sensitivity is handled by the UV environment, which specifies exact versions of all dependencies.
+}
 
 %! UNADDRESSED
 \feedback{While responsibilities are assigned in the timeline, it may also help to include a brief summary table listing each team member and their primary responsibility area. This would make roles easier to reference without scanning the full timeline. Another possible addition would be a short note describing collaboration expectations, such as shared ownership of integration or testing tasks.}
