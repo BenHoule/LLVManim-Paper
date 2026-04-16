@@ -5,7 +5,7 @@
 ## Clone the Repository
 
 ```bash
-git clone git@github.com:BenHoule/LLVManim-Paper.git
+git clone https://github.com/BenHoule/LLVManim.git
 cd LLVManim-Paper
 ```
 
