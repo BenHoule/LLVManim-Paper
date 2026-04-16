@@ -7,6 +7,7 @@
 
 % Define default colors for code listings
 \definecolor{listingbg}{gray}{0.97}  % Light gray background
+\definecolor{listingbg2}{rgb}{0.95,1.00,0.97}  % Light blue background
 \definecolor{listingrule}{gray}{0.80}  % Gray for frame rules
 \definecolor{listingcomment}{rgb}{0.00,0.40,0.00}  % Green for comments
 \definecolor{listingstring}{rgb}{0.55,0.10,0.10}  % Reddish for strings
@@ -65,73 +66,6 @@
   }
 }
 
-% LLVM IR syntax highlighting
-\lstset{
-  alsoletter={.!},
-  otherkeywords={!},
-}
-\lstdefinelanguage{llvmir}{
-  sensitive=true,
-  string=[b]{"},
-  morecomment=[l]{;},
-  % top-level / structural
-  morekeywords=[1]{
-    target, attributes, module, source_filename,
-    target datalayout, target triple,
-    global, constant, external, internal, private, weak, linkonce,
-    appending, common, dso_local, dso_preemptable
-  },
-  % instructions
-  morekeywords=[2]{
-    define, declare, add, fadd, sub, fsub, mul, fmul, udiv, sdiv, fdiv,
-    urem, srem, frem, shl, lshr, ashr, and, or, xor,
-    alloca, load, store, getelementptr, fence, cmpxchg, atomicrmw,
-    trunc, zext, sext, fptrunc, fpext, uitofp, sitofp, fptoui, fptosi,
-    inttoptr, ptrtoint, bitcast, addrspacecast,
-    icmp, fcmp, phi, select, call, va_arg, landingpad,
-    ret, br, switch, indirectbr, invoke, callbr, resume, unreachable,
-    extractelement, insertelement, shufflevector,
-    extractvalue, insertvalue, fneg
-  },
-  % types
-  morekeywords=[3]{
-    void, i1, i8, i16, i32, i64, i128, half, bfloat,
-    float, double, fp128, x86\_fp80, ptr, label, metadata, token
-  },
-  % attributes / qualifiers
-  morekeywords=[4]{
-    nounwind, noundef, noinline, optnone, uwtable, noreturn,
-    nocallback, nofree, nosync, speculatable, willreturn, memory,
-    noalias, readonly, writeonly, readnone, nonnull, dereferenceable,
-    align, inbounds, nsw, nuw, exact, volatile, atomic, inrange,
-    singlethread, acquire, release, acq_rel, seq_cst, unordered, monotonic,
-    frame-pointer, allocsize, min-legal-vector-width, no-trapping-math,
-    stack-protector-buffer-size, target-cpu, target-features, tune-cpu
-  },
-  morekeywords=[5]{
-  !dbg, DIExpression, DILocation, DILocalVariable, DIBasicType,
-  DISubprogram, DISubroutineType, DIFile, DICompileUnit,
-  DILexicalBlock, DILexicalBlockFile, DIDerivedType,
-  DICompositeType, DIGlobalVariable, DIGlobalVariableExpression,
-  },
-}
-\colorlet{llvmcomment}{Green}
-\colorlet{llvmkwA}{Periwinkle}
-\colorlet{llvmkwB}{Blue}
-\colorlet{llvmkwC}{BrickRed}
-\colorlet{llvmkwD}{CadetBlue}
-\lstdefinestyle{llvmirstyle}{
-  language=llvmir,
-  commentstyle=\color{llvmcomment}\itshape,
-  keywordstyle=[1]\color{llvmkwA},
-  keywordstyle=[2]\color{llvmkwB}\bfseries,
-  keywordstyle=[3]\color{llvmkwB},
-  keywordstyle=[4]\color{llvmkwD},
-  keywordstyle=[5]\color{llvmkwC}\itshape,
-  literate={!}{{\textcolor{llvmkwC}{!}}}1,
-  % literate={\#}{{\textcolor{llvmkwC}{\#}}}1,
-}
-
 % BibTeX definition for IEEEtran
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -149,3 +83,70 @@
 \emergencystretch=2em
 \hbadness=10000
 \hfuzz=2pt
+
+% % LLVM IR syntax highlighting --- Deprecated in favor of minted, but keeping this here for reference
+% \lstset{
+%   alsoletter={.!},
+%   otherkeywords={!},
+% }
+% \lstdefinelanguage{llvmir}{
+%   sensitive=true,
+%   string=[b]{"},
+%   morecomment=[l]{;},
+%   % top-level / structural
+%   morekeywords=[1]{
+%     target, attributes, module, source_filename,
+%     target datalayout, target triple,
+%     global, constant, external, internal, private, weak, linkonce,
+%     appending, common, dso_local, dso_preemptable
+%   },
+%   % instructions
+%   morekeywords=[2]{
+%     define, declare, add, fadd, sub, fsub, mul, fmul, udiv, sdiv, fdiv,
+%     urem, srem, frem, shl, lshr, ashr, and, or, xor,
+%     alloca, load, store, getelementptr, fence, cmpxchg, atomicrmw,
+%     trunc, zext, sext, fptrunc, fpext, uitofp, sitofp, fptoui, fptosi,
+%     inttoptr, ptrtoint, bitcast, addrspacecast,
+%     icmp, fcmp, phi, select, call, va_arg, landingpad,
+%     ret, br, switch, indirectbr, invoke, callbr, resume, unreachable,
+%     extractelement, insertelement, shufflevector,
+%     extractvalue, insertvalue, fneg
+%   },
+%   % types
+%   morekeywords=[3]{
+%     void, i1, i8, i16, i32, i64, i128, half, bfloat,
+%     float, double, fp128, x86\_fp80, ptr, label, metadata, token
+%   },
+%   % attributes / qualifiers
+%   morekeywords=[4]{
+%     nounwind, noundef, noinline, optnone, uwtable, noreturn,
+%     nocallback, nofree, nosync, speculatable, willreturn, memory,
+%     noalias, readonly, writeonly, readnone, nonnull, dereferenceable,
+%     align, inbounds, nsw, nuw, exact, volatile, atomic, inrange,
+%     singlethread, acquire, release, acq_rel, seq_cst, unordered, monotonic,
+%     frame-pointer, allocsize, min-legal-vector-width, no-trapping-math,
+%     stack-protector-buffer-size, target-cpu, target-features, tune-cpu
+%   },
+%   morekeywords=[5]{
+%   !dbg, DIExpression, DILocation, DILocalVariable, DIBasicType,
+%   DISubprogram, DISubroutineType, DIFile, DICompileUnit,
+%   DILexicalBlock, DILexicalBlockFile, DIDerivedType,
+%   DICompositeType, DIGlobalVariable, DIGlobalVariableExpression,
+%   },
+% }
+% \colorlet{llvmcomment}{Green}
+% \colorlet{llvmkwA}{Periwinkle}
+% \colorlet{llvmkwB}{Blue}
+% \colorlet{llvmkwC}{BrickRed}
+% \colorlet{llvmkwD}{CadetBlue}
+% \lstdefinestyle{llvmirstyle}{
+%   language=llvmir,
+%   commentstyle=\color{llvmcomment}\itshape,
+%   keywordstyle=[1]\color{llvmkwA},
+%   keywordstyle=[2]\color{llvmkwB}\bfseries,
+%   keywordstyle=[3]\color{llvmkwB},
+%   keywordstyle=[4]\color{llvmkwD},
+%   keywordstyle=[5]\color{llvmkwC}\itshape,
+%   literate={!}{{\textcolor{llvmkwC}{!}}}1,
+%   % literate={\#}{{\textcolor{llvmkwC}{\#}}}1,
+% }
