@@ -5,26 +5,3 @@ Fig.~\ref{fig:pipeline_latency} (Appendix~\ref{app:metrics_figures}) shows the r
 The scene-graph construction stages also scale linearly: \texttt{build\_scene\_graph(mode='cfg')} is $\Theta(n_b)$ in block count (Fig.~\ref{fig:cfg_build_scaling}), \texttt{derive\_cfg\_trace} is $\Theta(n_b)$ for linear-chain CFGs and $O(n_b \cdot k)$ in the presence of loops (Fig.~\ref{fig:trace_scaling}), and \texttt{build\_scene\_graph(mode='stack')} exhibits sub-linear growth empirically (Fig.~\ref{fig:stack_build_scaling}).
 
 Peak memory allocation also grows linearly with IR size for both pipelines (Fig.~\ref{fig:memory_scaling}).
-
-\subsection{Reproducibility}
-All LLVManim results can be reproduced from the public repository\cite{llvmanim-repo}:
-
-\begin{minted}[
-  autogobble,
-  frame=single,
-  bgcolor=listingbg,
-  breaklines=true,
-  fontsize=\footnotesize,
-]{bash}
-git clone https://github.com/BenHoule/LLVManim.git
-cd LLVManim
-uv sync --dev
-# run all 4 quality gates
-./scripts/quality-check.sh
-# Create coverage and LoC figures.
-./uv run python docs/metrics/generate_metrics.py
-# Create pipeline latency and scaling figures.
-./uv run python docs/metrics/generate_perf_metrics.py
-\end{minted}
-
-System requirements: Python 3.12+, \texttt{uv}, Linux packages \texttt{libcairo2-dev} and \texttt{libpango1.0-dev} (for Manim), and optionally \texttt{graphviz} for PNG graph export. See the repository's \texttt{README.md} for detailed setup instructions and troubleshooting tips.

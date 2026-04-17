@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="05 CLI Flag Dispatch (UML Sequence)" id="p05">
-        <mxGraphModel dx="1340" dy="631" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="720" math="0" shadow="0">
+        <mxGraphModel dx="1424" dy="771" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="720" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -27,7 +27,7 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n68" value="exit" style="endArrow=open;endFill=0;dashed=1;strokeColor=#888888;fontFamily=Helvetica;fontSize=16;fontColor=#999999;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;exitX=-0.053;exitY=0.992;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1" source="n15">
+                <mxCell id="n68" value="exit" style="endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontFamily=Helvetica;fontSize=16;fontColor=#666666;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;exitX=-0.053;exitY=0.992;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="n15" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="300" y="695" as="sourcePoint"/>
                         <mxPoint x="60" y="695" as="targetPoint"/>
@@ -39,7 +39,7 @@
                         <mxPoint x="550" y="520" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n2" value="" style="endArrow=none;dashed=1;strokeColor=#bbbbbb;dashPattern=6 4;fontSize=16;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" target="n15" edge="1" source="n9">
+                <mxCell id="n2" value="" style="endArrow=none;dashed=1;strokeColor=#bbbbbb;dashPattern=6 4;fontSize=16;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="n9" target="n15" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="260" y="75" as="sourcePoint"/>
                         <mxPoint x="335" y="765" as="targetPoint"/>
@@ -100,25 +100,25 @@
                         <mxPoint x="1170" y="175" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n33" value="IR Module" style="endArrow=open;endFill=0;dashed=1;strokeColor=#888888;fontFamily=Helvetica;fontSize=16;fontColor=#999999;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
+                <mxCell id="n33" value="IR Module" style="endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontFamily=Helvetica;fontSize=16;fontColor=#666666;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1175" y="195" as="sourcePoint"/>
                         <mxPoint x="560" y="195" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n34" value="ProgramEventStream" style="endArrow=open;endFill=0;dashed=1;strokeColor=#888888;fontFamily=Helvetica;fontSize=16;fontColor=#999999;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
+                <mxCell id="n34" value="ProgramEventStream" style="endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontFamily=Helvetica;fontSize=16;fontColor=#666666;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="545" y="225" as="sourcePoint"/>
                         <mxPoint x="270" y="225" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n51" value="SceneGraph (stack)" style="endArrow=open;endFill=0;dashed=1;strokeColor=#888888;fontFamily=Helvetica;fontSize=16;fontColor=#999999;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
+                <mxCell id="n51" value="SceneGraph (stack)" style="endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontFamily=Helvetica;fontSize=16;fontColor=#666666;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="760" y="388" as="sourcePoint"/>
                         <mxPoint x="270" y="388" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n36" value="SceneGraph" style="endArrow=open;endFill=0;dashed=1;strokeColor=#888888;fontFamily=Helvetica;fontSize=16;fontColor=#999999;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
+                <mxCell id="n36" value="SceneGraph" style="endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontFamily=Helvetica;fontSize=16;fontColor=#666666;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="755" y="290" as="sourcePoint"/>
                         <mxPoint x="270" y="290" as="targetPoint"/>
@@ -133,7 +133,7 @@
                         <mxPoint x="760" y="363" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n49" value="[--animate / --preview]" style="text;fillColor=none;strokeColor=none;fontFamily=Helvetica;fontSize=16;fontColor=#555555;align=left;fontStyle=2;verticalAlign=middle;textOpacity=80;labelBackgroundColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+                <mxCell id="n49" value="[--animate / --preview]" style="text;fillColor=none;strokeColor=none;fontFamily=Helvetica;fontSize=16;fontColor=#4D4D4D;align=left;fontStyle=2;verticalAlign=middle;textOpacity=80;labelBackgroundColor=default;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
                     <mxGeometry x="70" y="340" width="170" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="n52" value="StackRenderer.construct(sg)" style="endArrow=block;endFill=1;strokeColor=#333333;fontFamily=Helvetica;fontSize=16;fontColor=#333333;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
@@ -148,7 +148,7 @@
                         <mxPoint x="1170" y="445" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n54" value="MP4 / GIF" style="endArrow=open;endFill=0;strokeColor=#888888;fontFamily=Helvetica;fontSize=16;fontColor=#999999;rounded=1;dashed=1;align=center;verticalAlign=middle;labelBackgroundColor=default;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1" source="n24">
+                <mxCell id="n54" value="MP4 / GIF" style="endArrow=open;endFill=0;strokeColor=#666666;fontFamily=Helvetica;fontSize=16;fontColor=#666666;rounded=1;dashed=1;align=center;verticalAlign=middle;labelBackgroundColor=default;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="n24" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1180" y="468" as="sourcePoint"/>
                         <mxPoint x="60" y="470" as="targetPoint"/>
@@ -160,10 +160,10 @@
                         <mxPoint x="1250" y="505" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n56" value="[--cfg-animate]" style="text;fillColor=none;strokeColor=none;fontFamily=Helvetica;fontSize=16;fontColor=#555555;align=left;fontStyle=2;verticalAlign=middle;labelBackgroundColor=default;textOpacity=80;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+                <mxCell id="n56" value="[--cfg-animate]" style="text;fillColor=none;strokeColor=none;fontFamily=Helvetica;fontSize=16;fontColor=#4D4D4D;align=left;fontStyle=2;verticalAlign=middle;labelBackgroundColor=default;textOpacity=80;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
                     <mxGeometry x="70" y="530" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="n58" value="DotLayout" style="endArrow=open;endFill=0;dashed=1;strokeColor=#888888;fontFamily=Helvetica;fontSize=16;fontColor=#999999;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
+                <mxCell id="n58" value="DotLayout" style="endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontFamily=Helvetica;fontSize=16;fontColor=#666666;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="550" y="543" as="sourcePoint"/>
                         <mxPoint x="270" y="543" as="targetPoint"/>
@@ -175,19 +175,19 @@
                         <mxPoint x="750" y="562" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n60" value="TraceOverlay + commands" style="endArrow=open;endFill=0;dashed=1;strokeColor=#888888;fontFamily=Helvetica;fontSize=16;fontColor=#999999;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
+                <mxCell id="n60" value="TraceOverlay + commands" style="endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontFamily=Helvetica;fontSize=16;fontColor=#666666;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="760" y="587" as="sourcePoint"/>
                         <mxPoint x="270" y="585" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n62" value="Manim CE render" style="endArrow=block;endFill=1;strokeColor=#333333;fontFamily=Helvetica;fontSize=16;fontColor=#333333;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.002;entryY=0.142;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="n28" edge="1" source="n27">
+                <mxCell id="n62" value="Manim CE render" style="endArrow=block;endFill=1;strokeColor=#333333;fontFamily=Helvetica;fontSize=16;fontColor=#333333;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.002;entryY=0.142;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="n27" target="n28" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="970" y="645" as="sourcePoint"/>
                         <mxPoint x="1160" y="640" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="n63" value="MP4 / GIF" style="endArrow=open;endFill=0;strokeColor=#888888;fontFamily=Helvetica;fontSize=16;fontColor=#999999;rounded=1;dashed=1;align=center;verticalAlign=middle;labelBackgroundColor=default;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1" source="n28">
+                <mxCell id="n63" value="MP4 / GIF" style="endArrow=open;endFill=0;strokeColor=#666666;fontFamily=Helvetica;fontSize=16;fontColor=#666666;rounded=1;dashed=1;align=center;verticalAlign=middle;labelBackgroundColor=default;textOpacity=90;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="n28" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1180" y="662" as="sourcePoint"/>
                         <mxPoint x="60" y="670" as="targetPoint"/>

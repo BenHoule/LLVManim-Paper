@@ -32,7 +32,7 @@
 \feedback{You are using acronyms without defining them first.}
 {}
 
-%! UNADDRESSED
+% ADDRESSED - Updated figure
 \feedback{Why are these [lines in figure 5] in a different color? The light gray makes it harder to read on a white background.}
 {}
 
@@ -84,7 +84,7 @@
   Because the current implementation only supports running from the project source, and we wanted to show the actual command that would be used. We will update related instructions for the globally installed tool when such a feature is implemented.
 }
 
-%! UNADDRESSED
+% ADDRESSED - Updated package names
 \feedback{These packages will be different by distro, so I would either specify the distro that these packages are for, or just the names of the libraries and let the user determine the package name.}
 {}
 
@@ -96,13 +96,17 @@
 \feedback{Line numbering breaks page margins.}
 {}
 
-%! UNADDRESSED
+% REFUTED
 \feedback{In Grey-scale it is almost imposible to tell the difference between the purple and blue. I would consider using a symbol to distinguish the layers instead of colour.}
-{}
+{
+  The colors are primarily meant to help differentiate the layers quickly. While it is unfortunate that grayscale viewers lose out on this added benefit, it is not required for understanding the figures. However, we will consider adding symbols or patterns to further differentiate the layers in future iterations of the figures.
+}
 
-%! UNADDRESSED
+% REFUTED
 \feedback{It is also difficult to tell the difference between the green and orange in grey-scale.}
-{}
+{
+  see Response$_{[115]}$.
+}
 
 % ADDRESSED - Added architecture section to feedback
 \feedback{Does not address feedback from Proofreading - Architecture}
@@ -116,29 +120,37 @@
   This is a direct result of the fact that the project is ongoing and began as a proposal. Some behavior is still being planned and some behavior has already been implemented, so the tense shifts accordingly.
 }
 
-%! Refuted
+% REFUTED
 \feedback{Another improvement would be to briefly summarize the full workflow in one paragraph near the end of the introduction. While each section explains its role well, a single high-level “start-to-finish” explanation would help make it easier to understand how all parts connect.}
-{We have provided a high level summary in introduction.}
+{
+  We have provided a high level summary in introduction.
+}
 
 %! UNADDRESSED
 \feedback{Beyond alignment and ordering, the architecture section could benefit from explicit labeling of data types moving between layers. While the diagram shows components clearly, the specific forms of data are not always emphasized in the narrative explanation.}
 {}
 
-%! UNADDRESSED
+% REFUTED
 \feedback{Also, some terminology used in diagrams (such as SceneGraph, AnimationCommand, and TraceOverlay) appears in technical detail later but could be briefly defined earlier in the architecture section to improve readability.}
-{}
+{
+  Unforunately, page space is limited and we can only fit so many figures into the pages we have, resulting in some figures being pushed a page back due to how \LaTeX determines figure placement. However, we believe that the current placement does not significantly hinder understanding. We will consider adding brief definitions in the architecture section if we find that readers are having trouble understanding the diagrams without them.
+}
 
 %! UNADDRESSED
 \feedback{It would help to include one short example of a full user session, from command execution to generated output files. The current examples demonstrate commands clearly, but showing the result (such as filenames created or output directory structure) would make expected behavior easier to understand. It may also help to briefly describe expected failure behavior, such as what happens when invalid IR is supplied. While error handling is mentioned, an example error scenario would improve clarity.}
 {}
 
-%! UNADDRESSED
+% REFUTED
 \feedback{Another improvement would be to include one short usage example showing how a developer might extend the scene graph or animation behavior. This could be pseudocode demonstrating how a new animation command or visualization component would be added.}
-{}
+{
+  This is a good idea, but we feel that it is outside the scope of this report, as it would require a significant amount of additional content to explain how to extend the scene graph or animation behavior. Such information would be better suited for the project's technical documentation (which we hope to include with the final report).
+}
 
-%! UNADDRESSED
+% REFUTED
 \feedback{Also, it would be useful to specify whether the scene graph format is stable or experimental, since this affects how safely other developers could rely on it.}
-{}
+{
+  The scene graph format is currently experimental, as we are still iterating on the design and may make changes based on user feedback and implementation experience. We will make sure to clearly indicate this in the documentation so that developers understand that they should not rely on the current format for long-term use until it is stabilized.
+}
 
 % REFUTED
 \feedback{Beyond runtime vs development dependencies, it would be helpful to describe version sensitivity as for example, whether specific versions of Python, LLVM, or Manim are required. The document mentions Python 3.12, but similar version notes for other tools would reduce setup uncertainty. Additionally, identifying optional dependencies (such as Graphviz for visualization export) separately from required ones would make installation expectations clearer.}
@@ -146,11 +158,13 @@
   Version sensitivity is handled by the UV environment, which specifies exact versions of all dependencies.
 }
 
-%! UNADDRESSED
+% ADDRESSED
 \feedback{While responsibilities are assigned in the timeline, it may also help to include a brief summary table listing each team member and their primary responsibility area. This would make roles easier to reference without scanning the full timeline. Another possible addition would be a short note describing collaboration expectations, such as shared ownership of integration or testing tasks.}
-{}
+{
+  Unforunately, our group was not quite organized enough to warrant such a table. The existing timeline is already somewhat arbitrary in how it divides responsibilities, any additional division would be even more so.
+}
 
-%! refuted
+% REFUTED
 \feedback{In addition to adding project-management risks, another useful addition would be identifying technical dependency risks, such as reliance on external libraries (Manim or LLVM tooling). Explaining what fallback plan exists if these tools behave unexpectedly would strengthen the risk discussion.}
 {
    read carefully. tools dependency risks are discussed.
@@ -160,9 +174,11 @@
 \feedback{It would also be helpful to rank risks by relative severity or likelihood, rather than listing them equally. This would make mitigation planning appear more deliberate.}
 {}
 
-%! UNADDRESSED
+% REFUTED
 \feedback{In addition to adding testing schedules, the timeline could benefit from explicit integration milestones, where components from different layers are combined and validated together. This is especially important in multi-layer architectures.}
-{}
+{
+  At this point in the project, it is a bit late to update the timeline with specific integration milestones, as we have already completed a significant portion of the development work. However, we will ensure that integration testing is integrated into our ongoing development process, and we will consider adding more explicit milestones for these activities in future iterations of the project plan.
+}
 
 %! UNADDRESSED
 \feedback{Another useful addition would be identifying checkpoint deliverables, such as demo-ready versions at specific weeks, to make progress easier to measure.}

@@ -166,11 +166,7 @@ def main() -> None:
         display=display,
     )
 
-    # ── 4. CFG.pdf  (graphviz SVG) ────────────────────────────────────────────
-    step("CFG (graphviz SVG → PDF)", IMAGES / "CFG.pdf")
-    svg_to_pdf(IMAGES / "CFG.svg", IMAGES / "CFG.pdf")
-
-    # ── 5–8. PlantUML per-layer diagrams ──────────────────────────────────────
+    # ── 4–7. PlantUML per-layer diagrams ──────────────────────────────────────
     puml_dir = IMAGES / "plantuml"
     for stem in ("04a_literal_types", "04b_ingest_layer", "04c_transform_layer", "04d_render_layer"):
         step(f"{stem} (PlantUML → SVG → PDF)", IMAGES / f"{stem}.pdf")

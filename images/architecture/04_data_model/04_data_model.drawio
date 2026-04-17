@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="04 Core Data Model (UML)" id="p04">
-        <mxGraphModel dx="2606" dy="991" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1680" pageHeight="1700" math="0" shadow="0">
+        <mxGraphModel dx="2137" dy="1157" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1680" pageHeight="1700" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -204,26 +204,26 @@
         </mxGraphModel>
     </diagram>
     <diagram name="04a Literal Types" id="p04a">
-        <mxGraphModel dx="1050" dy="250" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="300" math="0" shadow="0">
+        <mxGraphModel dx="641" dy="347" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="300" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="la_ek" value="«Literal»&lt;br&gt;&lt;b&gt;EventKind&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;startSize=40;fillColor=#8e44ad;swimlaneLine=1;collapsible=0;html=1;strokeColor=#6c3483;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=14;rounded=0;" vertex="1" parent="1">
+                <mxCell id="la_ek" value="«Literal»&lt;br&gt;&lt;b&gt;EventKind&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;startSize=40;fillColor=#8e44ad;swimlaneLine=1;collapsible=0;html=1;strokeColor=#6c3483;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=14;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="30" y="30" width="280" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="la_ek_a" value="&quot;alloca&quot;&#xa;&quot;load&quot;&#xa;&quot;store&quot;&#xa;&quot;binop&quot; | &quot;compare&quot;&#xa;&quot;call&quot; | &quot;ret&quot; | &quot;br&quot; | &quot;other&quot;" style="text;fillColor=#f3e5f5;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Helvetica;fontSize=13;fontColor=#2c3e50;" vertex="1" parent="la_ek">
+                <mxCell id="la_ek_a" value="&quot;alloca&quot;&#xa;&quot;load&quot;&#xa;&quot;store&quot;&#xa;&quot;binop&quot; | &quot;compare&quot;&#xa;&quot;call&quot; | &quot;ret&quot; | &quot;br&quot; | &quot;other&quot;" style="text;fillColor=#f3e5f5;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Helvetica;fontSize=13;fontColor=#2c3e50;" parent="la_ek" vertex="1">
                     <mxGeometry y="40" width="280" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="la_ak" value="«Literal»&lt;br&gt;&lt;b&gt;ActionKind&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;startSize=40;fillColor=#8e44ad;swimlaneLine=1;collapsible=0;html=1;strokeColor=#6c3483;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=14;rounded=0;" vertex="1" parent="1">
+                <mxCell id="la_ak" value="«Literal»&lt;br&gt;&lt;b&gt;ActionKind&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;startSize=40;fillColor=#8e44ad;swimlaneLine=1;collapsible=0;html=1;strokeColor=#6c3483;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=14;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="340" y="30" width="380" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="la_ak_a" value="&quot;create_stack_slot&quot;&#xa;&quot;animate_memory_read&quot; | &quot;animate_memory_write&quot;&#xa;&quot;animate_binop&quot; | &quot;animate_compare&quot;&#xa;&quot;push_stack_frame&quot; | &quot;pop_stack_frame&quot;&#xa;&quot;highlight_branch&quot; | &quot;signal_stack_underflow&quot;&#xa;&quot;enter_block&quot; | &quot;exit_block&quot; | &quot;traverse_edge&quot;" style="text;fillColor=#f3e5f5;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Helvetica;fontSize=13;fontColor=#2c3e50;" vertex="1" parent="la_ak">
+                <mxCell id="la_ak_a" value="&quot;create_stack_slot&quot;&#xa;&quot;animate_memory_read&quot; | &quot;animate_memory_write&quot;&#xa;&quot;animate_binop&quot; | &quot;animate_compare&quot;&#xa;&quot;push_stack_frame&quot; | &quot;pop_stack_frame&quot;&#xa;&quot;highlight_branch&quot; | &quot;signal_stack_underflow&quot;&#xa;&quot;enter_block&quot; | &quot;exit_block&quot; | &quot;traverse_edge&quot;" style="text;fillColor=#f3e5f5;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Helvetica;fontSize=13;fontColor=#2c3e50;" parent="la_ak" vertex="1">
                     <mxGeometry y="40" width="380" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="la_br" value="«Literal»&lt;br&gt;&lt;b&gt;BlockRole&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;startSize=40;fillColor=#8e44ad;swimlaneLine=1;collapsible=0;html=1;strokeColor=#6c3483;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=14;rounded=0;" vertex="1" parent="1">
+                <mxCell id="la_br" value="«Literal»&lt;br&gt;&lt;b&gt;BlockRole&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;startSize=40;fillColor=#8e44ad;swimlaneLine=1;collapsible=0;html=1;strokeColor=#6c3483;fontColor=#FFFFFF;fontFamily=Helvetica;fontSize=14;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="750" y="30" width="240" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="la_br_a" value="&quot;entry&quot;&#xa;&quot;linear&quot;&#xa;&quot;branch&quot; | &quot;merge&quot;&#xa;&quot;exit&quot;" style="text;fillColor=#f3e5f5;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Helvetica;fontSize=13;fontColor=#2c3e50;" vertex="1" parent="la_br">
+                <mxCell id="la_br_a" value="&quot;entry&quot;&#xa;&quot;linear&quot;&#xa;&quot;branch&quot; | &quot;merge&quot;&#xa;&quot;exit&quot;" style="text;fillColor=#f3e5f5;strokeColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Helvetica;fontSize=13;fontColor=#2c3e50;" parent="la_br" vertex="1">
                     <mxGeometry y="40" width="240" height="80" as="geometry"/>
                 </mxCell>
             </root>
