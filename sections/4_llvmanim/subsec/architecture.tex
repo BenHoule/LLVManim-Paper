@@ -1,19 +1,19 @@
 LLVManim is implemented as a three-layer pipeline---\textbf{Ingestion}, \textbf{Transformation}, and \textbf{Render}---orchestrated by a dedicated \textbf{CLI} entry point. The high-level structure is shown in Fig.~\ref{fig:architecture_detail}. Layer boundaries are enforced at build time by \texttt{import-linter}, ensuring that no module imports from a downstream layer. The entire codebase is written in Python~3.12 and managed with \texttt{uv}.
 
-% \begin{figure*}[htbp]
-% \centerline{\includegraphics[height=0.6\textheight, keepaspectratio]{architecture_overview}}
-% \caption{High-level three-layer architecture of LLVManim.}
-% \label{fig:architecture_overview}
-% \end{figure*}
-
 \begin{figure*}[htbp]
-\centerline{\includegraphics[height=0.88\textheight]{01_architecture_overview_vertical}}
+\includegraphics[height=\textheight, width=\textwidth]{01_architecture_overview_vertical}
 \caption{Detailed module-level architecture. The Ingestion layer collects LLVM IR and metadata, the Transformation layer maps it to an intermediate scene graph, and the Rendering layer renders animations or exports artifacts.}
 \label{fig:architecture_detail}
 \end{figure*}
 
+\begin{figure*}[htbp]
+\includegraphics[width=\textwidth]{05_cli_dispatch}
+\caption{CLI dispatch flow. Each command flag (\texttt{-{}-json}, \texttt{-{}-draw}, \texttt{-{}-animate}, \texttt{-{}-cfg-animate}) shares the Ingest pipeline and branches to the appropriate Transform and Render stages.}
+\label{fig:cli_dispatch}
+\end{figure*}
+
 \subsubsection{CLI Entry Point}
-The \texttt{llvmanim.cli} module is the user-facing entry point. It accepts LLVM~IR files and orchestrates the three pipeline layers via \texttt{argparse}:
+The \texttt{llvmanim.cli} module is the user-facing entry point. It accepts LLVM~IR files and orchestrates the three pipeline layers via \texttt{argparse}; example usage is shown in Listing~\ref{cli:usage}.
 \begin{minted}[
   autogobble,
   frame=single,
@@ -21,23 +21,23 @@ The \texttt{llvmanim.cli} module is the user-facing entry point. It accepts LLVM
   breaklines=true,
   fontsize=\footnotesize,
 ]{bash}
-# Export JSON scene graph + Graphviz DOT/PNG
-uv run llvmanim input.ll --json --draw --outdir out/
-# Render basic stack animation
-uv run llvmanim input.ll --animate --ir-mode basic --outdir out/
-# Render rich IR spotlight with SSA panel
-uv run llvmanim input.ll --animate --ir-mode rich-ssa --speed 1.5 --outdir out/
-# CFG traversal animation
-uv run llvmanim input.ll --cfg-animate --dot-cfg main.dot --import-trace trace.json --outdir out/
+  # Export JSON scene graph + Graphviz DOT/PNG
+  uv run llvmanim input.ll --json --draw --outdir out/
+  # Render basic stack animation
+  uv run llvmanim input.ll --animate --ir-mode basic --outdir out/
+  # Render rich IR spotlight with SSA panel
+  uv run llvmanim input.ll --animate --ir-mode rich-ssa --speed 1.5 --outdir out/
+  # CFG traversal animation
+  uv run llvmanim <input file> --cfg-animate --dot-cfg main.dot --import-trace trace.json --outdir <out/>
 \end{minted}
+\vspace{-5ex}
 \captionof{listing}{Actual CLI usage}
-Fig.~\ref{fig:cli_dispatch} traces the complete CLI dispatch flow, showing how each command flag routes through the shared Ingest pipeline to the appropriate Transform and Render stages. When the tool encounters unsupported IR constructs, missing debug metadata, or malformed input, it emits a descriptive error message and continues processing the remainder of the program where possible.
+\label{cli:usage}
+\vspace{2ex}
 
-\begin{figure*}[htbp]
-\centerline{\includegraphics[width=\textwidth]{05_cli_dispatch}}
-\caption{CLI dispatch flow. Each command flag (\texttt{-{}-json}, \texttt{-{}-draw}, \texttt{-{}-animate}, \texttt{-{}-cfg-animate}) shares the Ingest pipeline and branches to the appropriate Transform and Render stages.}
-\label{fig:cli_dispatch}
-\end{figure*}
+The CLI supports multiple modes of operation, including JSON export, static CFG drawing, stack animation with three IR detail levels, and CFG traversal animation with optional trace import. Each command flag routes through the shared Ingest pipeline to the appropriate Transform and Render stages, as detailed in Fig.~\ref{fig:cli_dispatch}. When the tool encounters unsupported IR constructs, missing debug metadata, or malformed input, it emits a descriptive error message and continues processing the remainder of the program where possible.
+
+\vspace{1ex}
 
 \subsubsection{Ingestion Layer}
 The Ingestion layer extracts program structure from LLVM IR. It uses the \texttt{llvmlite}\cite{llvmlite} Python binding to parse \texttt{.ll} files and also supports importing pre-computed data from JSON.
@@ -56,11 +56,13 @@ The Ingestion layer extracts program structure from LLVM IR. It uses the \texttt
     \item \textbf{\texttt{display\_lines.py}:} Cleans raw IR text into per-function line lists used by the rich animation panels.
 \end{itemize}
 
+\vspace{1ex}
+
 \subsubsection{Transformation Layer}
 The Transformation layer converts the ingest output into an intermediate scene graph and execution traces suitable for rendering. The complete data model spanning all three layers is shown in Fig.~\ref{fig:data_model}.
 
 \begin{figure*}[!htbp]
-\centerline{\includegraphics[width=1.15\textwidth]{04_data_model}}
+\centerline{\includegraphics[height=\textheight, width=\textwidth]{04_data_model}}
 \caption{Unified data model. Ingest types (\texttt{ProgramEventStream}, \texttt{IREvent}, \texttt{CFGEdge}, \texttt{DotLayout}) feed into Transform types (\texttt{SceneGraph}, \texttt{SceneNode}, \texttt{SceneEdge}, \texttt{AnimationCommand}, \texttt{TraceOverlay}) which are consumed by Render types (\texttt{CommandDrivenScene}, \texttt{StackRenderer}, \texttt{CFGRenderer}).}
 \label{fig:data_model}
 \end{figure*}
@@ -72,6 +74,8 @@ The Transformation layer converts the ingest output into an intermediate scene g
 
     \item \textbf{\texttt{trace.py}:} The \texttt{build\_execution\_trace} function produces a~list of \texttt{TraceStep} or~\texttt{RichTraceStep} records capturing the execution order with optional SSA result values for \texttt{binop}, \texttt{compare}, and~\texttt{load} instructions.
 \end{itemize}
+
+\vspace{1ex}
 
 \subsubsection{Render Layer}
 The Render layer renders the scene graph using Manim Community Edition\cite{manimce} and provides export functionality. All scenes extend \texttt{CommandDrivenScene}, a base class that iterates over the \texttt{SceneGraph.commands} list and dispatches each \texttt{AnimationCommand} to a registered handler. The complete type hierarchy---from Ingest types through Transform intermediates to the Render dispatch classes---is shown in Fig.~\ref{fig:data_model}.

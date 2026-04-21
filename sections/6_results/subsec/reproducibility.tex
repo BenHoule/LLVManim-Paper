@@ -7,15 +7,18 @@ All LLVManim results can be reproduced from the public repository\cite{llvmanim-
   breaklines=true,
   fontsize=\footnotesize,
 ]{bash}
-git clone https://github.com/BenHoule/LLVManim.git
-cd LLVManim
-uv sync --dev
-# run all 4 quality gates
-./scripts/quality-check.sh
-# Create coverage and LoC figures.
-./uv run python docs/metrics/generate_metrics.py
-# Create pipeline latency and scaling figures.
-./uv run python docs/metrics/generate_perf_metrics.py
+  git clone https://github.com/BenHoule/LLVManim.git
+  cd LLVManim
+  uv sync --dev
+  # run all 4 quality gates
+  ./scripts/quality-check.sh
+  # Create coverage and LoC figures.
+  ./uv run python docs/metrics/generate_metrics.py
+  # Create pipeline latency and scaling figures.
+  ./uv run python docs/metrics/generate_perf_metrics.py
 \end{minted}
+\vspace{-5ex}
+\captionof{listing}{Commands to reproduce all results.}
+\vspace{2ex}
 
 System requirements: Python 3.12+, \texttt{uv}, Linux packages \texttt{libcairo2} and \texttt{libpango} (for Manim), and optionally \texttt{graphviz} for PNG graph export. See the repository's \texttt{README.md} for detailed setup instructions and troubleshooting tips.
