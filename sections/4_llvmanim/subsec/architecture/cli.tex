@@ -1,0 +1,24 @@
+The \texttt{llvmanim.cli} module is the user-facing entry point. It accepts LLVM~IR files and orchestrates the three pipeline layers via \texttt{argparse}; example usage is shown in Listing~\ref{cli:usage}.
+\begin{minted}[
+  autogobble,
+  frame=single,
+  bgcolor=listingbg,
+  breaklines=true,
+  fontsize=\footnotesize,
+]{bash}
+  # Export JSON scene graph + Graphviz DOT/PNG
+  uv run llvmanim input.ll --json --draw --outdir out/
+  # Render basic stack animation
+  uv run llvmanim input.ll --animate --ir-mode basic --outdir out/
+  # Render rich IR spotlight with SSA panel
+  uv run llvmanim input.ll --animate --ir-mode rich-ssa --speed 1.5 --outdir out/
+  # CFG traversal animation
+  uv run llvmanim input.ll --cfg-animate --dot-cfg main.dot --import-trace trace.json --outdir out/
+\end{minted}
+\vspace{-5ex}
+\captionof{listing}{Actual CLI usage}
+\label{cli:usage}
+
+\vspace{2ex}
+
+The CLI supports multiple modes of operation, including JSON export, static CFG drawing, stack animation with three IR detail levels, and CFG traversal animation with optional trace import. Each command flag routes through the shared Ingest pipeline to the appropriate Transform and Render stages, as detailed in Fig.~\ref{fig:cli_dispatch}. When the tool encounters unsupported IR constructs, missing debug metadata, or malformed input, it emits a descriptive error message and continues processing the remainder of the program where possible.

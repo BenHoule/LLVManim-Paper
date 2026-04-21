@@ -30,6 +30,17 @@
 \usepackage{pgfornament}
 \usepackage{LLVManim}
 
+% \captionof (caption pkg) calls \caption@parboxrestore@light which sets
+% \parindent=0pt. Inside a float this is local; outside (captionof) it persists
+% for the rest of the document, breaking paragraph indentation.  Remove the
+% \parindent assignment here -- caption text is typeset in a box so it is moot.
+\makeatletter
+\renewcommand*\caption@parboxrestore@light{%
+  \let\par\@@par
+  \parskip\z@skip
+  \sloppy}
+\makeatother
+
 \begin{document}
 
 

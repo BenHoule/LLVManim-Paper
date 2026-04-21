@@ -1,0 +1,15 @@
+The Transformation layer converts the ingest output into an intermediate scene graph and execution traces suitable for rendering. The complete data model spanning all three layers is shown in Fig.~\ref{fig:data_model}.
+
+\begin{figure*}[!htbp]
+\centerline{\includegraphics[height=\textheight, width=\textwidth]{04_data_model}}
+\caption{Unified data model. Ingest types (\texttt{Program\-Event\-Stream}, \texttt{IR\-Event}, \texttt{CFG\-Edge}, \texttt{Dot\-Layout}) feed into Transform types (\texttt{Scene\-Graph}, \texttt{Scene\-Node}, \texttt{Scene\-Edge}, \texttt{Animation\-Command}, \texttt{Trace\-Overlay}) which are consumed by Render types (\texttt{Command\-Driven\-Scene}, \texttt{Stack\-Renderer}, \texttt{CFG\-Renderer}).}
+\label{fig:data_model}
+\end{figure*}
+
+\begin{itemize}
+    \item \textbf{\texttt{models.py}:} Defines the core data model---\texttt{Scene\-Graph}, \texttt{Scene\-Node}, \texttt{Scene\-Edge}, \texttt{CFG\-Block}, \texttt{Trace\-Overlay}, and \texttt{Block\-Meta\-data}. Also defines \texttt{Animation\-Command} and \texttt{Action\-Kind}, the typed animation primitives consumed by the Render layer. Nodes carry a~\texttt{kind} string and an open \texttt{properties} dict, with an optional \texttt{animation\-\_hint} string. \texttt{Scene\-Graph} embeds an ordered \texttt{commands} list alongside its nodes and edges.
+
+    \item \textbf{\texttt{scene.py}:} The \texttt{build\-\_scene\-\_graph} function groups events by function and block, attaches typed CFG edges, assigns block roles, applies optional domtree/loop metadata, and populates \texttt{Scene\-Graph.commands} via the overlay builder. \texttt{build\-\_stack\-\_scene\-\_graph} produces a call-tree-ordered \texttt{Scene\-Graph} with a fully populated \texttt{commands} list, translating the parsed \texttt{\allowbreak ProgramEventStream} directly into typed \texttt{Animation\-Command} records (carrying \texttt{Action\-Kind}, \texttt{target}, and \texttt{params}) ready for consumption by the Render layer.
+
+    \item \textbf{\texttt{trace.py}:} The \texttt{build\-\_execution\-\_trace} function produces a~list of \texttt{Trace\-Step} or~\texttt{Rich\-Trace\-Step} records capturing the execution order with optional SSA result values for \texttt{binop}, \texttt{compare}, and~\texttt{load} instructions.
+\end{itemize}

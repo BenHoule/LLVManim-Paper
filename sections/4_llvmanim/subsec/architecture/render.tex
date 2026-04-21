@@ -1,0 +1,15 @@
+The Render layer renders the scene graph using Manim Community Edition\cite{manimce} and provides export functionality. All scenes extend \texttt{Command\-Driven\-Scene}, a base class that iterates over the \texttt{Scene\-Graph.commands} list and dispatches each \texttt{Animation\-Command} to a registered handler. The complete type hierarchy---from Ingest types through Transform intermediates to the Render dispatch classes---is shown in Fig.~\ref{fig:data_model}.
+
+\begin{itemize}
+    \item \textbf{Animation Modes:} The tool supports three stack-rendering modes using \texttt{-{}-ir-mode} flags, all driven by \texttt{Stack\-Renderer}---a \texttt{Command\-Driven\-Scene} subclass. Each mode consumes the same \texttt{Animation\-Command} records (detailed in Fig.~\ref{fig:data_model}) but presents progressively more detail. Specific information on the implemented modes is provided in the \textit{Results} Section~\ref{sec:results:animation_modes}.
+
+    \item \textbf{CFG Traversal:} \texttt{-{}-cfg-animate} renders an animated walk through the control-flow graph using \texttt{CFG\-Renderer} (another \texttt{Command\-Driven\-Scene} subclass) with DOT-derived node positions (\texttt{-{}-dot-cfg}) and a runtime trace (\texttt{-{}-import-trace}). If no trace is provided, a static DFS trace is derived automatically.
+
+    \item \textbf{Export:} Static artifacts complement the animated output.
+    \begin{itemize}
+        \item \texttt{-{}-json}: Writes a~machine-readable scene graph (\texttt{scene\_graph.json}).
+        \item \texttt{-{}-draw}: Writes \texttt{cfg\_main.dot} and, when Graphviz is available, a~rendered \texttt{cfg\_main.png}.
+    \end{itemize}
+
+    \item \textbf{Rendering:} Manim CE renders MP4 or GIF output. GIF conversion uses an \texttt{ffmpeg} palette workflow to reduce peak memory usage. The \texttt{-{}-preview} flag opens the rendered animation in a viewer.
+\end{itemize}
