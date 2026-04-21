@@ -15,6 +15,13 @@ without needing to compromise between style and accessibility.
 \label{sec:llvmanim:design_goals}
 \subimport{subsec/}{design_goals.tex}
 
+\begin{figure*}[htbp]
+\includegraphics[width=\textwidth]{05_cli_dispatch}
+\caption{CLI dispatch flow. Each command flag (\texttt{-{}-json}, \texttt{-{}-draw}, \texttt{-{}-animate}, \texttt{-{}-cfg-animate}) shares the Ingest pipeline and branches to the appropriate Transform and Render stages.}
+\label{fig:cli_dispatch}
+\end{figure*}
+
+\needspace{10\baselineskip}
 \subsection{Architecture}
 \label{sec:llvmanim:architecture}
 \subimport{subsec/}{architecture.tex}

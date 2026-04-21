@@ -1,15 +1,11 @@
-LLVManim is implemented as a three-layer pipeline---\textbf{Ingestion}, \textbf{Transformation}, and \textbf{Render}---orchestrated by a dedicated \textbf{CLI} entry point. The high-level structure is shown in Fig.~\ref{fig:architecture_detail}. Layer boundaries are enforced at build time by \texttt{import-linter}, ensuring that no module imports from a downstream layer. The entire codebase is written in Python~3.12 and managed with \texttt{uv}.
+LLVManim is implemented as a three-layer pipeline---\textbf{Ingestion}, \textbf{Transformation}, and \textbf{Render}---orchestrated by a dedicated \textbf{CLI} entry point. The high-level structure is shown in Fig.~\ref{fig:architecture_detail}. Layer boundaries are enforced at build time by \texttt{import-linter}, ensuring that no module imports from a downstream layer. The entire codebase is written in Python~3.12 and managed with \texttt{uv}\cite{uv}.
+
+\vspace{1ex}
 
 \begin{figure*}[htbp]
 \includegraphics[height=\textheight, width=\textwidth]{01_architecture_overview_vertical}
 \caption{Detailed module-level architecture. The Ingestion layer collects LLVM IR and metadata, the Transformation layer maps it to an intermediate scene graph, and the Rendering layer renders animations or exports artifacts.}
 \label{fig:architecture_detail}
-\end{figure*}
-
-\begin{figure*}[htbp]
-\includegraphics[width=\textwidth]{05_cli_dispatch}
-\caption{CLI dispatch flow. Each command flag (\texttt{-{}-json}, \texttt{-{}-draw}, \texttt{-{}-animate}, \texttt{-{}-cfg-animate}) shares the Ingest pipeline and branches to the appropriate Transform and Render stages.}
-\label{fig:cli_dispatch}
 \end{figure*}
 
 \subsubsection{CLI Entry Point}
@@ -43,15 +39,15 @@ The CLI supports multiple modes of operation, including JSON export, static CFG 
 The Ingestion layer extracts program structure from LLVM IR. It uses the \texttt{llvmlite}\cite{llvmlite} Python binding to parse \texttt{.ll} files and also supports importing pre-computed data from JSON.
 
 \begin{itemize}
-    \item \textbf{\texttt{llvm\_events.py}:} Parses an LLVM module and emits a~\texttt{ProgramEventStream}---a typed sequence of~\texttt{IREvent} records. Each event carries the function name, block name, opcode, full instruction text, a~classified \texttt{EventKind} (one of~\texttt{alloca}, \texttt{load}, \texttt{store}, \texttt{binop}, \texttt{compare}, \texttt{call}, \texttt{ret}, \texttt{br}, or~\texttt{other}), its index within the function, debug line number, and operand list. Typed CFG edges are extracted directly from \texttt{llvmlite} terminator operands (\texttt{br}, \texttt{switch}, \texttt{invoke}, \texttt{indirectbr}, \texttt{callbr}) with true/false labels on conditional branches.
+    \item \textbf{\texttt{llvm\_events.py}:} Parses an LLVM module and emits a~\texttt{Program\-Event\-Stream}---a typed sequence of~\texttt{IR\-Event} records. Each event carries the function name, block name, opcode, full instruction text, a~classified \texttt{Event\-Kind} (one of~\texttt{alloca}, \texttt{load}, \texttt{store}, \texttt{binop}, \texttt{compare}, \texttt{call}, \texttt{ret}, \texttt{br}, or~\texttt{other}), its index within the function, debug line number, and operand list. Typed CFG edges are extracted directly from \texttt{llvmlite} terminator operands (\texttt{br}, \texttt{switch}, \texttt{invoke}, \texttt{indirectbr}, \texttt{callbr}) with true/false labels on conditional branches.
 
-    \item \textbf{\texttt{cfg\_edge\_io.py}:} Serializes and deserializes \texttt{CFGEdge} lists to~JSON, enabling round-trip import/export of control-flow edges via dedicated CLI flags.
+    \item \textbf{\texttt{cfg\_edge\_io.py}:} Serializes and deserializes \texttt{CFG\-Edge} lists to~JSON, enabling round-trip import/export of control-flow edges via dedicated CLI flags.
 
     \item \textbf{\texttt{analysis\_metadata\_io.py}:} Loads and saves dominator-tree and loop-analysis metadata as~JSON, supporting round-trip import and export via CLI flags.
 
     \item \textbf{\texttt{trace\_io.py}:} Reads and writes runtime path traces as JSON (\texttt{-{}-import-trace} / \texttt{-{}-export-trace}), used for overlay visualization in CFG traversal animations.
 
-    \item \textbf{\texttt{dot\_layout.py}:} Parses a Graphviz DOT file produced by \texttt{opt -passes=dot-cfg} and computes a \texttt{DotLayout} with node positions and edge routes for the CFG animation scene.
+    \item \textbf{\texttt{dot\_layout.py}:} Parses a Graphviz DOT file produced by \texttt{opt -passes=dot-cfg} and computes a \texttt{Dot\-Layout} with node positions and edge routes for the CFG animation scene.
 
     \item \textbf{\texttt{display\_lines.py}:} Cleans raw IR text into per-function line lists used by the rich animation panels.
 \end{itemize}
@@ -63,32 +59,27 @@ The Transformation layer converts the ingest output into an intermediate scene g
 
 \begin{figure*}[!htbp]
 \centerline{\includegraphics[height=\textheight, width=\textwidth]{04_data_model}}
-\caption{Unified data model. Ingest types (\texttt{ProgramEventStream}, \texttt{IREvent}, \texttt{CFGEdge}, \texttt{DotLayout}) feed into Transform types (\texttt{SceneGraph}, \texttt{SceneNode}, \texttt{SceneEdge}, \texttt{AnimationCommand}, \texttt{TraceOverlay}) which are consumed by Render types (\texttt{CommandDrivenScene}, \texttt{StackRenderer}, \texttt{CFGRenderer}).}
+\caption{Unified data model. Ingest types (\texttt{Program\-Event\-Stream}, \texttt{IR\-Event}, \texttt{CFG\-Edge}, \texttt{Dot\-Layout}) feed into Transform types (\texttt{Scene\-Graph}, \texttt{Scene\-Node}, \texttt{Scene\-Edge}, \texttt{Animation\-Command}, \texttt{Trace\-Overlay}) which are consumed by Render types (\texttt{Command\-Driven\-Scene}, \texttt{Stack\-Renderer}, \texttt{CFG\-Renderer}).}
 \label{fig:data_model}
 \end{figure*}
 
 \begin{itemize}
-    \item \textbf{\texttt{models.py}:} Defines the core data model---\texttt{SceneGraph}, \texttt{SceneNode}, \texttt{SceneEdge}, \texttt{CFGBlock}, \texttt{TraceOverlay}, and \texttt{BlockMetadata}. Also defines \texttt{AnimationCommand} and \texttt{ActionKind}, the typed animation primitives consumed by the Render layer. Nodes carry a~\texttt{kind} string and an open \texttt{properties} dict, with an optional \texttt{animation\_hint} string. \texttt{SceneGraph} embeds an ordered \texttt{commands} list alongside its nodes and edges.
+    \item \textbf{\texttt{models.py}:} Defines the core data model---\texttt{Scene\-Graph}, \texttt{Scene\-Node}, \texttt{Scene\-Edge}, \texttt{CFG\-Block}, \texttt{Trace\-Overlay}, and \texttt{Block\-Meta\-data}. Also defines \texttt{Animation\-Command} and \texttt{Action\-Kind}, the typed animation primitives consumed by the Render layer. Nodes carry a~\texttt{kind} string and an open \texttt{properties} dict, with an optional \texttt{animation\-\_hint} string. \texttt{Scene\-Graph} embeds an ordered \texttt{commands} list alongside its nodes and edges.
 
-    \item \textbf{\texttt{scene.py}:} The \texttt{build\_scene\_graph} function groups events by function and block, attaches typed CFG edges, assigns block roles, applies optional domtree/loop metadata, and populates \texttt{SceneGraph.commands} via the overlay builder. \texttt{build\_stack\_scene\_graph} produces a call-tree-ordered \texttt{SceneGraph} with a fully populated \texttt{commands} list, translating the parsed \texttt{\allowbreak ProgramEventStream} directly into typed \texttt{\allowbreak AnimationCommand} records (carrying \texttt{ActionKind}, \texttt{target}, and \texttt{params}) ready for consumption by the Render layer.
+    \item \textbf{\texttt{scene.py}:} The \texttt{build\-\_scene\-\_graph} function groups events by function and block, attaches typed CFG edges, assigns block roles, applies optional domtree/loop metadata, and populates \texttt{Scene\-Graph.commands} via the overlay builder. \texttt{build\-\_stack\-\_scene\-\_graph} produces a call-tree-ordered \texttt{Scene\-Graph} with a fully populated \texttt{commands} list, translating the parsed \texttt{\allowbreak ProgramEventStream} directly into typed \texttt{Animation\-Command} records (carrying \texttt{Action\-Kind}, \texttt{target}, and \texttt{params}) ready for consumption by the Render layer.
 
-    \item \textbf{\texttt{trace.py}:} The \texttt{build\_execution\_trace} function produces a~list of \texttt{TraceStep} or~\texttt{RichTraceStep} records capturing the execution order with optional SSA result values for \texttt{binop}, \texttt{compare}, and~\texttt{load} instructions.
+    \item \textbf{\texttt{trace.py}:} The \texttt{build\-\_execution\-\_trace} function produces a~list of \texttt{Trace\-Step} or~\texttt{Rich\-Trace\-Step} records capturing the execution order with optional SSA result values for \texttt{binop}, \texttt{compare}, and~\texttt{load} instructions.
 \end{itemize}
 
 \vspace{1ex}
 
 \subsubsection{Render Layer}
-The Render layer renders the scene graph using Manim Community Edition\cite{manimce} and provides export functionality. All scenes extend \texttt{CommandDrivenScene}, a base class that iterates over the \texttt{SceneGraph.commands} list and dispatches each \texttt{AnimationCommand} to a registered handler. The complete type hierarchy---from Ingest types through Transform intermediates to the Render dispatch classes---is shown in Fig.~\ref{fig:data_model}.
+The Render layer renders the scene graph using Manim Community Edition\cite{manimce} and provides export functionality. All scenes extend \texttt{Command\-Driven\-Scene}, a base class that iterates over the \texttt{Scene\-Graph.commands} list and dispatches each \texttt{Animation\-Command} to a registered handler. The complete type hierarchy---from Ingest types through Transform intermediates to the Render dispatch classes---is shown in Fig.~\ref{fig:data_model}.
 
 \begin{itemize}
-    \item \textbf{Animation Modes:} The tool supports three stack-rendering modes, all driven by \texttt{StackRenderer}---a \texttt{CommandDrivenScene} subclass. Each mode consumes the same \texttt{AnimationCommand} records (detailed in Fig.~\ref{fig:data_model}) but presents progressively more detail.
-    \begin{itemize}
-        \item \texttt{-{}-ir-mode basic}: Stack-only view with per-cell badge flash for each instruction.
-        \item \texttt{-{}-ir-mode rich}: Two-column layout with an IR source panel and a moving spotlight cursor alongside the stack view.
-        \item \texttt{-{}-ir-mode rich-ssa}: Three-column layout (IR Source $\mid$ SSA Values $\mid$ Stack) showing computed results for binary operations, comparisons, and loads.
-    \end{itemize}
+    \item \textbf{Animation Modes:} The tool supports three stack-rendering modes using \texttt{-{}-ir-mode} flags, all driven by \texttt{Stack\-Renderer}---a \texttt{Command\-Driven\-Scene} subclass. Each mode consumes the same \texttt{Animation\-Command} records (detailed in Fig.~\ref{fig:data_model}) but presents progressively more detail. Specific information on the implemented modes is provided in the \textit{Results} Section~\ref{sec:results:animation_modes}.
 
-    \item \textbf{CFG Traversal:} \texttt{-{}-cfg-animate} renders an animated walk through the control-flow graph using \texttt{CFGRenderer} (another \texttt{CommandDrivenScene} subclass) with DOT-derived node positions (\texttt{-{}-dot-cfg}) and a runtime trace (\texttt{-{}-import-trace}). If no trace is provided, a static DFS trace is derived automatically.
+    \item \textbf{CFG Traversal:} \texttt{-{}-cfg-animate} renders an animated walk through the control-flow graph using \texttt{CFG\-Renderer} (another \texttt{Command\-Driven\-Scene} subclass) with DOT-derived node positions (\texttt{-{}-dot-cfg}) and a runtime trace (\texttt{-{}-import-trace}). If no trace is provided, a static DFS trace is derived automatically.
 
     \item \textbf{Export:} Static artifacts complement the animated output.
     \begin{itemize}
