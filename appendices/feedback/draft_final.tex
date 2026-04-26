@@ -34,23 +34,83 @@
 \feedback{Feedback can be dropped from the final version.}
 {}
 
-% \feedbackdivider
+\feedbackdivider
 
-% %! UNADDRESSED
-% \feedback{}
-% {}
+% REFUTED
+\feedback{[`slog'] is slightly too informal for a paper.}
+{
+  It is a common term and the paper is already quite formal, so we don't think this word is a problem.
+}
 
-% \feedbackdivider
+% ADDRESSED - Removed the redundant sentence.
+\feedback{You already said this [final paragraph of intro.] in the abstract so it's a little redundant to say it again.}
+{}
 
-% %! UNADDRESSED
-% \feedback{}
-% {}
+% ADDRESSED - Made sure LLVMLite is capitalized throughout the report (except diagrams).
+\feedback{[LLVMLite] wasn't capitalized earlier in the report. It needs to be consistent.}
+{}
 
-% \feedbackdivider
+% REFUTED
+\feedback{Taking data from potential users of your tool would be a good way to show it's effectiveness.}
+{
+  It would be, but we don't have the time.
+}
 
-% %! UNADDRESSED
-% \feedback{}
-% {}
+% ADDRESSED - Changed wording
+\feedback{Should be "are a broad spectrum" since users is plural.}
+{}
+
+\feedbackdivider
+
+%! UNADDRESSED
+\feedback{One area that could still be improved is the motivation and impact framing. While the introduction explains the gap between LLVM's functionality and presentation quality, the paper could more explicitly emphasize why this matters for users. Strengthening the connection to real-world use cases (such as teaching effectiveness or presentation clarity) would make the project feel more impactful rather than primarily technical.}
+{}
+
+%! UNADDRESSED
+\feedback{The results section is thorough, with strong coverage of features, performance, and testing. However, similar to earlier feedback, it focuses mostly on implementation metrics (coverage, performance, features completed). Including even a small amount of discussion about how effective the visualizations are for users would strengthen the evaluation and better tie results back to the original goals.}
+{}
+
+%! UNADDRESSED
+\feedback{some earlier figures and diagrams are dense, and slightly improving readability or consistency across all visuals would enhance the overall presentation.}
+{}
+
+%! UNADDRESSED
+\feedback{The discussion section is well done, particularly the reflection on architectural decisions and deviations from the proposal. This shows a strong understanding of the development process. The inclusion of limitations is also valuable, though briefly connecting those limitations back to future improvements or user impact could strengthen this section further.}
+{}
+
+\feedbackdivider
+
+% REFUTED
+\feedback{The radius of the corners of the layers seem to depend on the size of the rectangle. I would recommend making them all have the same radius}
+{
+  This seems like an exceptionally minor detail.
+}
+
+% REFUTED
+\feedback{[CI quality check output] cannot be reproduced}
+{}
+
+% REFUTED
+\feedback{Additionally there is no `uv' folder in the root of the repository so `./uv run python docs/\-metrics/\-generate\_\-metrics.py' \& `./uv run python docs/\-metrics/\-generate\_\-perf\_\-metrics.py' cannot be run}
+{
+  \texttt{uv} is a Python task runner used to manage our development environment (mentioned in Section~\ref{sec:llvmanim:architecture}). The \texttt{uv} configuration file specifies dependencies and commands for our project, but does not create a \texttt{uv} folder. To run the commands, you need to have \texttt{uv} installed; instructions for installing it can be found in the README.
+}
+
+% REFUTED
+\feedback{Don't use dark mode for figures.}
+{
+  Working on it.
+}
+
+% REFUTED
+\feedback{As far as I can tell, this feedback was not acted on, but no explanation was provided as to the reasoning. It seems to me that this is also the case with a few other pieces of feedback.}
+{
+  Not all feedback was able to be addressed in the time we were given, especially since peer reviews for this segment were only provided a couple days before it was due. Any unaddressed feedback without a provided explanation can be assumed as something we would have liked to address but were not able to. We will continue to work on addressing as much feedback as possible in future iterations of the report, and we will make sure to provide explanations for any feedback that we are not able to address.
+}
+
+%! UNADDRESSED
+\feedback{I think it would be good to have one section where utilized technologies are discussed, as it is they are spread out and can be hard to find amongst all the other things that use typewriter text.}
+{}
 
 % \feedbackdivider
 

@@ -1,4 +1,4 @@
-%! Addressed - explained dot and cfg
+% Addressed - explained dot and cfg
 \feedback{Make sure that you explain what DOT and CFG are.}
 {}
 
@@ -58,9 +58,11 @@
   It is worded this way because the report is meant to be a precursor to the final report, and the results are meant to be a demonstration of the progress made so far. We include a table of the project goals and how they have been met in the results section, and provide a dedicated \textit{Deviations from Proposal} subsection in the discussion section.
 }
 
-%! UNADDRESSED
+% REFUTED
 \feedback{Since the goal of the project is to improve presentation and understanding, it would strengthen the report to include some discussion of how effective the visualizations are for users, even if only informally.}
-{}
+{
+  We have not yet conducted any user testing, so we do not have any data on the effectiveness of the visualizations for users. We do not think speculation on this topic would be helpful at this stage.
+}
 
 % ADDRESSED(?) - Updated figures
 \feedback{The figures showing the animation outputs are clear and helpful, but improving readability and consistency across all figures would make the document stronger overall.}
@@ -105,7 +107,7 @@
 % REFUTED
 \feedback{It is also difficult to tell the difference between the green and orange in grey-scale.}
 {
-  see Response$_{[115]}$.
+  See Response$_{[115]}$.
 }
 
 % ADDRESSED - Added architecture section to feedback
@@ -126,9 +128,11 @@
   We have provided a high level summary in introduction.
 }
 
-%! UNADDRESSED
+% ADDRESSED
 \feedback{Beyond alignment and ordering, the architecture section could benefit from explicit labeling of data types moving between layers. While the diagram shows components clearly, the specific forms of data are not always emphasized in the narrative explanation.}
-{}
+{
+  We would need a more specific example of where this is an issue in order to address it, as the data types are mentioned throughout the architecture section and we are not sure which ones are not emphasized enough.
+}
 
 % REFUTED
 \feedback{Also, some terminology used in diagrams (such as SceneGraph, AnimationCommand, and TraceOverlay) appears in technical detail later but could be briefly defined earlier in the architecture section to improve readability.}
@@ -136,9 +140,11 @@
   Unforunately, page space is limited and we can only fit so many figures into the pages we have, resulting in some figures being pushed a page back due to how \LaTeX determines figure placement. However, we believe that the current placement does not significantly hinder understanding. We will consider adding brief definitions in the architecture section if we find that readers are having trouble understanding the diagrams without them.
 }
 
-%! UNADDRESSED
+% REFUTED
 \feedback{It would help to include one short example of a full user session, from command execution to generated output files. The current examples demonstrate commands clearly, but showing the result (such as filenames created or output directory structure) would make expected behavior easier to understand. It may also help to briefly describe expected failure behavior, such as what happens when invalid IR is supplied. While error handling is mentioned, an example error scenario would improve clarity.}
-{}
+{
+  We have provided a usage example in the results section, and we will consider adding an example error scenario in future iterations of the report.
+}
 
 % REFUTED
 \feedback{Another improvement would be to include one short usage example showing how a developer might extend the scene graph or animation behavior. This could be pseudocode demonstrating how a new animation command or visualization component would be added.}
@@ -161,7 +167,7 @@
 % ADDRESSED
 \feedback{While responsibilities are assigned in the timeline, it may also help to include a brief summary table listing each team member and their primary responsibility area. This would make roles easier to reference without scanning the full timeline. Another possible addition would be a short note describing collaboration expectations, such as shared ownership of integration or testing tasks.}
 {
-  Unforunately, our group was not quite organized enough to warrant such a table. The existing timeline is already somewhat arbitrary in how it divides responsibilities, any additional division would be even more so.
+  Unfortunately, our group was not quite organized enough to warrant such a table. The existing timeline is already somewhat arbitrary in how it divides responsibilities, any additional division would be even more so.
 }
 
 % REFUTED
@@ -170,9 +176,11 @@
    read carefully. tools dependency risks are discussed.
 }
 
-%! UNADDRESSED
+% REFUTED
 \feedback{It would also be helpful to rank risks by relative severity or likelihood, rather than listing them equally. This would make mitigation planning appear more deliberate.}
-{}
+{
+  The risks for this project are not easily quantifiable, so we chose to list them without ranking.
+}
 
 % REFUTED
 \feedback{In addition to adding testing schedules, the timeline could benefit from explicit integration milestones, where components from different layers are combined and validated together. This is especially important in multi-layer architectures.}
@@ -180,9 +188,11 @@
   At this point in the project, it is a bit late to update the timeline with specific integration milestones, as we have already completed a significant portion of the development work. However, we will ensure that integration testing is integrated into our ongoing development process, and we will consider adding more explicit milestones for these activities in future iterations of the project plan.
 }
 
-%! UNADDRESSED
+% REFUTED
 \feedback{Another useful addition would be identifying checkpoint deliverables, such as demo-ready versions at specific weeks, to make progress easier to measure.}
-{}
+{
+  We have already completed a significant portion of the development work, so it is a bit late to update the timeline with specific checkpoint deliverables.
+}
 
 % REFUTED
 \feedback{Beyond scaling concerns, figure captions could be improved by including short explanations of why each figure matters, not just what it shows. Some captions describe the content but do not explain its significance to the system design.}
@@ -190,6 +200,8 @@
   Explanations for why each figure matters can be found in the body text of the document.
 }
 
-%! UNADDRESSED
+% REFUTED
 \feedback{Additionally, several figures contain dense technical details that might benefit from progressive disclosure, such as introducing a simplified diagram first and then a more detailed version later.}
-{}
+{
+  The paper is already crowded with figures, and we do not have the page space to include multiple versions of the same figure. We will consider adding simplified diagrams in future iterations of the report if we find that readers are having trouble understanding the current diagrams.
+}

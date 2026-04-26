@@ -6,5 +6,5 @@ Several architectural decisions shaped the final system---
 
   \item \textbf{Pipeline approach:} The tool processes data in a linear pipeline: parse $\rightarrow$ build scene graph $\rightarrow$ render or export. This simplified testing because each stage could be exercised independently with deterministic fixtures. The 302 tests in the suite are predominantly unit tests that operate on a single layer.
 
-  \item \textbf{llvmlite for terminator parsing:} Early prototypes used regex-based parsing of LLVM IR text, which proved fragile for edge cases such as \texttt{switch} and \texttt{invoke} terminators. Switching to \texttt{llvmlite}'s Python binding, which exposes the LLVM C~API, made CFG edge extraction reliable across all five terminator types.
+  \item \textbf{LLVMLite for terminator parsing:} Early prototypes used regex-based parsing of LLVM IR text, which proved fragile for edge cases such as \texttt{switch} and \texttt{invoke} terminators. Switching to \texttt{LLVMLite}'s Python binding, which exposes the LLVM C~API, made CFG edge extraction reliable across all five terminator types.
 \end{itemize}
