@@ -4,6 +4,7 @@ The following design requirements guided the implementation of LLVManim:
 \item \textbf{Simple CLI:} A command-line interface that accepts \texttt{.ll} files, selects visualization options via flags, and produces output with minimal configuration.
 \item \textbf{LLVM IR Parsing:} Extraction of control flow, memory operations, and SSA value information from LLVM IR using the \texttt{LLVMLite}\cite{llvmlite} Python binding.
 \item \textbf{Multiple Animation Modes:} Several rendering modes offering different levels of detail---from a compact stack-only view to a full three-column layout showing IR source, SSA values, and the call stack simultaneously.
+\needspace{6\baselineskip}
 \item \textbf{IR Instruction Coverage:} Support for the most common LLVM IR instructions (\texttt{alloca}, \texttt{load}, \texttt{store}, \texttt{call}, \texttt{ret}, \texttt{br}, binary operations, and comparisons), enabling visualization of a wide range of programs.
 \item \textbf{Machine-Readable Export:} JSON scene graph and Graphviz DOT output for integration with external tools and downstream analysis.
 \item \textbf{Testability and Quality:} A comprehensive automated test suite and multi-stage quality gate to maintain correctness throughout development.

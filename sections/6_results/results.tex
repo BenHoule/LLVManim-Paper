@@ -4,15 +4,23 @@ This section reports the implemented capabilities of LLVManim across its final r
 \label{sec:results:feature_coverage}
 \subimport{subsec/}{feature_coverage.tex}
 
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{rich_mode_frame}
+\caption{Rich mode: two-column layout with IR source spotlight alongside the stack.}
+\label{fig:rich_mode}
+\end{figure*}
+
 \needspace{6\baselineskip}
 \subsection{Supported IR Instructions}
 \label{sec:results:supported_instructions}
 \subimport{subsec/}{supported_instructions.tex}
 
 \begin{figure*}[htbp]
-\includegraphics[width=\textwidth]{basic_mode_frame}
-\caption{Basic mode: stack-only view with per-cell badge flash during a \texttt{call} to \texttt{@init}.}
-\label{fig:basic_mode}
+\centering
+\includegraphics[width=\textwidth]{rich_ssa_mode_frame}
+\caption{Rich-SSA mode: three-column layout showing computed SSA values for \texttt{load} and \texttt{icmp} instructions.}
+\label{fig:rich_ssa_mode}
 \end{figure*}
 
 \subsection{Animation Modes}

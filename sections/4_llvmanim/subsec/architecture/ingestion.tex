@@ -1,8 +1,32 @@
-The Ingestion layer extracts program structure from LLVM IR. It uses the \texttt{LLVMLite} Python binding to parse \texttt{.ll} files and also supports importing pre-computed data from JSON.
+The Ingestion layer uses the \texttt{LLVMLite} Python binding to parse program structure from LLVM IR in pre-compiled \texttt{.ll} files.
 
 \begin{itemize}
-    \item \textbf{\texttt{llvm\_events.py}:} Parses an LLVM module and emits a~\texttt{Program\-Event\-Stream}---a typed sequence of~\texttt{IR\-Event} records. Each event carries the function name, block name, opcode, full instruction text, a~classified \texttt{Event\-Kind} (one of~\texttt{alloca}, \texttt{load}, \texttt{store}, \texttt{binop}, \texttt{compare}, \texttt{call}, \texttt{ret}, \texttt{br}, or~\texttt{other}), its index within the function, debug line number, and operand list. Typed CFG edges are extracted directly from \texttt{LLVMLite} terminator operands (\texttt{br}, \texttt{switch}, \texttt{invoke}, \texttt{indirectbr}, \texttt{callbr}) with true/false labels on conditional branches.
+    \item \textbf{\texttt{llvm\_events.py}:} Parses an IR module and emits a~\texttt{Program\-Event\-Stream}---a typed sequence of~\texttt{IR\-Event} records. Each event carries the function name, block name, opcode, full instruction text, its index within the function, debug line number, operand list, and a~classified \texttt{Event\-Kind}. Table~\ref{tab:eventkind_mapping} shows the opcode-to-\texttt{Event\-Kind} classification rules. Typed CFG edges are extracted directly from \texttt{LLVMLite} terminator operands (\texttt{br}, \texttt{switch}, \texttt{invoke}, \texttt{indirectbr}, \texttt{callbr}) with true/false labels on conditional branches.
 
+\begin{table}[h]
+\centering
+\caption{Opcode-to-\texttt{EventKind} classification in \texttt{llvm\_events.py}.}
+\label{tab:eventkind_mapping}
+\renewcommand{\arraystretch}{1.3}
+\rowcolors{2}{white}{gray!10}
+\begin{tabularx}{0.9\columnwidth}{|X|c|}
+\hline
+\rowcolor[HTML]{4472C4}
+\hline
+\textcolor{white}{\textbf{LLVM IR Opcode(s)}} & \textcolor{white}{\textbf{EventKind}} \\ \hline
+\texttt{alloca}                              & \texttt{alloca}  \\ \hline
+\texttt{load}                                & \texttt{load}    \\ \hline
+\texttt{store}                               & \texttt{store}   \\ \hline
+\texttt{add, sub, mul, div}, etc.            & \texttt{binop}   \\ \hline
+\texttt{icmp}, \texttt{fcmp}                 & \texttt{compare} \\ \hline
+\texttt{call}                                & \texttt{call}    \\ \hline
+\texttt{ret}                                 & \texttt{ret}     \\ \hline
+\texttt{br}                                  & \texttt{br}      \\ \hline
+all others                                   & \texttt{other}   \\ \hline
+\end{tabularx}
+\end{table}
+
+    \needspace{3\baselineskip}
     \item \textbf{\texttt{cfg\_edge\_io.py}:} Serializes and deserializes \texttt{CFG\-Edge} lists to~JSON, enabling round-trip import/export of control-flow edges via dedicated CLI flags.
 
     \item \textbf{\texttt{analysis\_metadata\_io.py}:} Loads and saves dominator-tree and loop-analysis metadata as~JSON, supporting round-trip import and export via CLI flags.

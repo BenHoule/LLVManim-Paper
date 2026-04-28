@@ -34,6 +34,10 @@
     postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
 }
 
+% Custom float types: CLI commands and source code listings
+\DeclareCaptionType{clilisting}[CLI][List of CLI Commands]
+\DeclareCaptionType{sourcelisting}[Source Code][List of Source Code Listings]
+
 % Command for creating feedback/response blocks
 \newcounter{feedbackcount}
 \newcommand{\feedbackset}[1]{\setcounter{feedbackcount}{#1}}

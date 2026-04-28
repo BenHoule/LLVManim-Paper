@@ -1,5 +1,6 @@
 The Render layer renders the scene graph using Manim Community Edition\cite{manimce} and provides export functionality. All scenes extend \texttt{Command\-Driven\-Scene}, a base class that iterates over the \texttt{Scene\-Graph.commands} list and dispatches each \texttt{Animation\-Command} to a registered handler. The complete type hierarchy---from Ingest types through Transform intermediates to the Render dispatch classes---is shown in Fig.~\ref{fig:data_model}.
 
+\needspace{6\baselineskip}
 \begin{itemize}
     \item \textbf{Animation Modes:} The tool supports three stack-rendering modes using \texttt{-{}-ir-mode} flags, all driven by \texttt{Stack\-Renderer}---a \texttt{Command\-Driven\-Scene} subclass. Each mode consumes the same \texttt{Animation\-Command} records (detailed in Fig.~\ref{fig:data_model}) but presents progressively more detail. Specific information on the implemented modes is provided in the \textit{Results} Section~\ref{sec:results:animation_modes}.
 
