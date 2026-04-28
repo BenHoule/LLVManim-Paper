@@ -34,7 +34,7 @@ sudo apt-get install -y \
 | `texlive-latex-extra`          | `minted`, `etoolbox`, `float`, `multicol`, `placeins`, etc. |
 | `texlive-fonts-recommended`    | Standard fonts                                              |
 | `texlive-fonts-extra`          | Extra fonts used by IEEEtran                                |
-| `texlive-bibtex-extra`         | `IEEEtran.bst` BibTeX style                                |
+| `texlive-bibtex-extra`         | `IEEEtran.bst` BibTeX style                                 |
 | `texlive-science`              | `amsmath`, `amssymb`, `algorithmic`                         |
 | `texlive-pictures`             | TikZ / PGF (used by `pgfornament`)                          |
 | `python3-pygments`             | Pygments for `minted` syntax highlighting                   |
