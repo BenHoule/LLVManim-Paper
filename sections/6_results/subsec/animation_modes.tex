@@ -10,19 +10,20 @@ LLVManim provides three stack-focused animation modes and one graph-based mode, 
 
 \textbf{Basic mode} (\texttt{-{}-ir-mode basic}) renders a minimal stack-only view. Each IR instruction triggers a per-cell badge flash on the corresponding stack slot, providing a clean visual pulse of execution without additional clutter. This mode is best suited for audiences who need only a high-level sense of execution flow, such as introductory lectures or quick demonstrations, since it strips away all source-level detail and focuses purely on the call stack. Listing~\ref{cli:basic_mode} shows the CLI command used to generate the animation shown in Fig.~\ref{fig:basic_mode}.
 \vspace{-4ex}
-\begin{minted}[
-  autogobble,
-  frame=single,
-  bgcolor=listingbg,
-  breaklines=true,
-  fontsize=\footnotesize,
-]{bash}
-  uv run llvmanim double.ll --animate --ir-mode basic --outdir out/
-\end{minted}
-\vspace{-5ex}
-\captionof{listing}{CLI command to generate the basic mode animation shown in Fig.~\ref{fig:basic_mode}.}
-\label{cli:basic_mode}
-
+\begin{listing}[H]
+  \begin{minted}[
+    autogobble,
+    frame=single,
+    bgcolor=listingbg,
+    breaklines=true,
+    fontsize=\footnotesize,
+  ]{bash}
+    uv run llvmanim double.ll --animate --ir-mode basic --outdir out/
+  \end{minted}
+  \vspace{-5ex}
+  \captionof{listing}{CLI command to generate the basic mode animation shown in Fig.~\ref{fig:basic_mode}.}
+  \label{cli:basic_mode}
+\end{listing}
 \vspace{2ex}
 
 % MOVED FIGURE TO RISK_EVALUATION.TEX SO IT WOULD RENDER ON THE SAME PAGE --- IGNORE ---
@@ -34,34 +35,20 @@ LLVManim provides three stack-focused animation modes and one graph-based mode, 
 
 \textbf{Rich mode} (\texttt{-{}-ir-mode rich}) extends the basic view with a two-column layout. An IR source panel on the left displays the current function's instructions while a spotlight cursor tracks the executing line, giving the audience both the ``what'' (the stack) and the ``where'' (the source). This mode is particularly valuable when the presenter wants to walk through specific IR constructs---for example, showing how a series of \texttt{alloca} and \texttt{store} instructions initialize local variables before a loop body executes. The spotlight cursor provides a natural focal point that guides the viewer's attention through the code. Listing~\ref{cli:rich_mode} shows the CLI command used to generate the animation shown in Fig.~\ref{fig:rich_mode}.
 \vspace{-2ex}
-\begin{minted}[
-  autogobble,
-  frame=single,
-  bgcolor=listingbg,
-  breaklines=true,
-  fontsize=\footnotesize,
-]{bash}
-  uv run llvmanim double.ll --animate --ir-mode rich --outdir out/
-\end{minted}
-\vspace{-5ex}
-\caption{CLI command to generate a rich mode animation shown in Fig.~\ref{fig:rich_mode}.}
-\label{cli:rich_mode}
-\vspace{2ex}
-
-\textbf{Rich-SSA mode} (\texttt{-{}-ir-mode rich-ssa}) takes the rich layout a step further with a dedicated third column for SSA values (IR Source $\mid$ SSA Values $\mid$ Stack). The center panel displays the symbolic result of each binary operation, comparison, or load as it executes, making it possible to follow data dependencies without mentally resolving \texttt{\%}-names. This is the most detailed mode and targets audiences already familiar with SSA form---for instance, a compiler course where students need to see how \texttt{\%4 = icmp slt i32 \%2, \%3} evaluates during a loop iteration. Listing~\ref{cli:rich_ssa_mode} shows the CLI command used to generate the animation shown in Fig.~\ref{fig:rich_ssa_mode}.
-\vspace{-2ex}
-\begin{minted}[
-  autogobble,
-  frame=single,
-  bgcolor=listingbg,
-  breaklines=true,
-  fontsize=\footnotesize,
-]{bash}
-uv run llvmanim double.ll --animate --ir-mode rich-ssa --outdir out/
-\end{minted}
-\vspace{-5ex}
-\caption{CLI command to generate a rich-SSA mode animation shown in Fig.~\ref{fig:rich_ssa_mode}.}
-\label{cli:rich_ssa_mode}
+\begin{listing}[H]
+  \begin{minted}[
+    autogobble,
+    frame=single,
+    bgcolor=listingbg,
+    breaklines=true,
+    fontsize=\footnotesize,
+  ]{bash}
+    uv run llvmanim double.ll --animate --ir-mode rich --outdir out/
+  \end{minted}
+  \vspace{-5ex}
+  \caption{CLI command to generate a rich mode animation shown in Fig.~\ref{fig:rich_mode}.}
+  \label{cli:rich_mode}
+\end{listing}
 \vspace{2ex}
 
 \begin{figure*}[htbp]
@@ -70,19 +57,44 @@ uv run llvmanim double.ll --animate --ir-mode rich-ssa --outdir out/
 \label{fig:rich_ssa_mode}
 \end{figure*}
 
+\textbf{Rich-SSA mode} (\texttt{-{}-ir-mode rich-ssa}) takes the rich layout a step further with a dedicated third column for SSA values (IR Source $\mid$ SSA Values $\mid$ Stack). The center panel displays the symbolic result of each binary operation, comparison, or load as it executes, making it possible to follow data dependencies without mentally resolving \texttt{\%}-names. This is the most detailed mode and targets audiences already familiar with SSA form---for instance, a compiler course where students need to see how \texttt{\%4 = icmp slt i32 \%2, \%3} evaluates during a loop iteration. Listing~\ref{cli:rich_ssa_mode} shows the CLI command used to generate the animation shown in Fig.~\ref{fig:rich_ssa_mode}.
+\vspace{-2ex}
+\begin{listing}[H]
+  \begin{minted}[
+    autogobble,
+    frame=single,
+    bgcolor=listingbg,
+    breaklines=true,
+    fontsize=\footnotesize,
+  ]{bash}
+    uv run llvmanim double.ll --animate --ir-mode rich-ssa --outdir out/
+  \end{minted}
+  \vspace{-5ex}
+  \caption{CLI command to generate a rich-SSA mode animation shown in Fig.~\ref{fig:rich_ssa_mode}.}
+  \label{cli:rich_ssa_mode}
+\end{listing}
+
 \needspace{6\baselineskip}
 \textbf{CFG traversal} (\texttt{-{}-cfg-animate}) renders an animated walk through the control-flow graph, using Graphviz DOT layout for node positions and a runtime trace for the traversal order:
 \vspace{-2ex}
-\begin{minted}[
-  autogobble,
-  frame=single,
-  bgcolor=listingbg,
-  breaklines=true,
-  fontsize=\footnotesize,
-]{bash}
-  uv run llvmanim double.ll --cfg-animate --dot-cfg main.dot --import-trace trace.json --outdir out/
-\end{minted}
-\vspace{-5ex}
-\caption{CLI command to generate a CFG traversal animation.}
-\label{cli:cfg_traversal}
+\begin{listing}[H]
+  \begin{minted}[
+    autogobble,
+    frame=single,
+    bgcolor=listingbg,
+    breaklines=true,
+    fontsize=\footnotesize,
+  ]{bash}
+    uv run llvmanim double.ll --cfg-animate --dot-cfg main.dot --import-trace trace.json --outdir out/
+  \end{minted}
+  \vspace{-5ex}
+  \caption{CLI command to generate a CFG traversal animation.}
+  \label{cli:cfg_traversal}
+\end{listing}
 \vspace{2ex}
+
+\begin{figure*}[htbp]
+\includegraphics[width=\textwidth]{cfg_mode_frame}
+\caption{CFG mode: Animated walk through the control-flow graph, highlighting blocks and edges as they are traversed.}
+\label{fig:cfg_mode}
+\end{figure*}

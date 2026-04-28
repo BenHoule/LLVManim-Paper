@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="01 Architecture Overview" id="p01">
-        <mxGraphModel dx="-1118" dy="694" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="900" math="0" shadow="0">
+        <mxGraphModel dx="-1663" dy="347" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="900" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -787,11 +787,11 @@
         </mxGraphModel>
     </diagram>
     <diagram name="01c Transform Layer" id="p01c">
-        <mxGraphModel dx="639" dy="989" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="425" pageHeight="425" math="0" shadow="0">
+        <mxGraphModel dx="737" dy="347" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="425" pageHeight="425" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="es9AHeSiKiaHNFE3Spp8-2" value="" style="group" vertex="1" connectable="0" parent="1">
+                <mxCell id="es9AHeSiKiaHNFE3Spp8-2" value="" style="group" parent="1" vertex="1" connectable="0">
                     <mxGeometry x="11" y="180" width="160" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="c1" value="Scene-Graph Build  ·  scene.py" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fdebd0;strokeColor=#ca6f1e;fontColor=#ca6f1e;verticalAlign=top;align=left;spacingLeft=8;spacingTop=2;fontStyle=1;fontSize=10;fontFamily=Helvetica;" parent="es9AHeSiKiaHNFE3Spp8-2" vertex="1">
@@ -800,7 +800,7 @@
                 <mxCell id="c7" value="build_scene_graph()&lt;br&gt;scene.py" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e67e22;fontColor=white;strokeColor=#000000;fontSize=8;fontFamily=Helvetica;" parent="es9AHeSiKiaHNFE3Spp8-2" vertex="1">
                     <mxGeometry x="15" y="30" width="125" height="45" as="geometry"/>
                 </mxCell>
-                <mxCell id="es9AHeSiKiaHNFE3Spp8-3" value="" style="group" vertex="1" connectable="0" parent="1">
+                <mxCell id="es9AHeSiKiaHNFE3Spp8-3" value="" style="group" parent="1" vertex="1" connectable="0">
                     <mxGeometry x="283" y="180" width="140" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="c2" value="Trace Derivation  ·  trace.py" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fdebd0;strokeColor=#ca6f1e;fontColor=#ca6f1e;verticalAlign=top;align=center;spacingLeft=8;spacingTop=2;fontStyle=1;fontSize=10;fontFamily=Helvetica;" parent="es9AHeSiKiaHNFE3Spp8-3" vertex="1">
@@ -888,10 +888,10 @@
                 <mxCell id="c10" value="TraceOverlay&lt;br&gt;(override)" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f5cba7;fontColor=#ca6f1e;strokeColor=#ca6f1e;backgroundOutline=1;size=14;fontSize=8;fontFamily=Helvetica;" parent="1" vertex="1">
                     <mxGeometry x="313" y="110" width="80" height="45" as="geometry"/>
                 </mxCell>
-                <mxCell id="es9AHeSiKiaHNFE3Spp8-6" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 10px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;Transform Layer (llvmanim/transform/, composed)&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                <mxCell id="es9AHeSiKiaHNFE3Spp8-6" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 10px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;Transform Layer (llvmanim/transform/, composed)&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
                     <mxGeometry x="78" width="270" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="fKizQdcw1J34FQPLdtGS-2" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.501;entryDx=0;entryDy=0;entryPerimeter=0;orthogonal=1;rounded=1;strokeColor=#555555;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=7;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=1;curved=0;" edge="1" parent="1" source="c8" target="c11">
+                <mxCell id="fKizQdcw1J34FQPLdtGS-2" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.501;entryDx=0;entryDy=0;entryPerimeter=0;orthogonal=1;rounded=1;strokeColor=#555555;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=7;fontColor=default;labelBackgroundColor=default;endArrow=block;endFill=1;curved=0;" parent="1" source="c8" target="c11" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
             </root>
