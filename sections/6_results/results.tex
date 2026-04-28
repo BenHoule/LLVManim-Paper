@@ -1,3 +1,5 @@
+This section reports the implemented capabilities of LLVManim across its final release, covering feature completeness, the supported subset of LLVM IR instructions, available animation modes, test suite quality, and overall codebase size. Performance metrics and reproducibility details are also included to demonstrate the tool's practical usability and reliability.
+
 \subsection{Feature Coverage}
 \label{sec:results:feature_coverage}
 \subimport{subsec/}{feature_coverage.tex}
@@ -6,6 +8,12 @@
 \subsection{Supported IR Instructions}
 \label{sec:results:supported_instructions}
 \subimport{subsec/}{supported_instructions.tex}
+
+\begin{figure*}[htbp]
+\includegraphics[width=\textwidth]{basic_mode_frame}
+\caption{Basic mode: stack-only view with per-cell badge flash during a \texttt{call} to \texttt{@init}.}
+\label{fig:basic_mode}
+\end{figure*}
 
 \subsection{Animation Modes}
 \label{sec:results:animation_modes}

@@ -1,9 +1,3 @@
-\begin{figure*}[htbp]
-\includegraphics[width=\textwidth]{rich_mode_frame}
-\caption{Rich mode: two-column layout with IR source spotlight alongside the stack.}
-\label{fig:rich_mode}
-\end{figure*}
-
 LLVManim provides three stack-focused animation modes and one graph-based mode, each reproducible with a single CLI command. The stack-focused modes (basic, rich, rich-SSA) share a common layout and animation style, with increasing levels of IR detail. The graph-based mode renders an animated traversal of the control-flow graph using Graphviz layout and a runtime trace for the traversal order. Each mode is designed to target different presentation contexts and audience familiarity levels, allowing users to choose the appropriate level of detail for their needs. The following sections describe each mode in detail, along with example CLI commands for generating the animations. All animations were generated from the same \texttt{double.ll} test program, which contains a simple loop with arithmetic operations, memory accesses, and control flow. The full source code for \texttt{double.c} and \texttt{double.ll} is provided in appendix~\ref{app:code_examples}.
 
 \vspace{2ex}
@@ -26,12 +20,11 @@ LLVManim provides three stack-focused animation modes and one graph-based mode, 
 \end{listing}
 \vspace{2ex}
 
-% MOVED FIGURE TO RISK_EVALUATION.TEX SO IT WOULD RENDER ON THE SAME PAGE --- IGNORE ---
-% \begin{figure*}[htbp]
-% \includegraphics[width=\textwidth]{basic_mode_frame}
-% \caption{Basic mode: stack-only view with per-cell badge flash during a \texttt{call} to \texttt{@init}.}
-% \label{fig:basic_mode}
-% \end{figure*}
+\begin{figure*}[htbp]
+\includegraphics[width=\textwidth]{rich_mode_frame}
+\caption{Rich mode: two-column layout with IR source spotlight alongside the stack.}
+\label{fig:rich_mode}
+\end{figure*}
 
 \textbf{Rich mode} (\texttt{-{}-ir-mode rich}) extends the basic view with a two-column layout. An IR source panel on the left displays the current function's instructions while a spotlight cursor tracks the executing line, giving the audience both the ``what'' (the stack) and the ``where'' (the source). This mode is particularly valuable when the presenter wants to walk through specific IR constructs---for example, showing how a series of \texttt{alloca} and \texttt{store} instructions initialize local variables before a loop body executes. The spotlight cursor provides a natural focal point that guides the viewer's attention through the code. Listing~\ref{cli:rich_mode} shows the CLI command used to generate the animation shown in Fig.~\ref{fig:rich_mode}.
 \vspace{-2ex}
